@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class FormAccueuil
+Partial Class FormMenu
     Inherits System.Windows.Forms.Form
 
     'Form remplace la méthode Dispose pour nettoyer la liste des composants.
@@ -22,89 +22,96 @@ Partial Class FormAccueuil
     'Ne la modifiez pas à l'aide de l'éditeur de code.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.ComboBoxName = New System.Windows.Forms.ComboBox()
+        Me.ComboBoxNom = New System.Windows.Forms.ComboBox()
         Me.BtnJouer = New System.Windows.Forms.Button()
         Me.BtnOptions = New System.Windows.Forms.Button()
         Me.BtnScores = New System.Windows.Forms.Button()
         Me.BtnQuitter = New System.Windows.Forms.Button()
-        Me.LblName = New System.Windows.Forms.Label()
+        Me.LblNom = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
-        'ComboBoxName
+        'ComboBoxNom
         '
-        Me.ComboBoxName.FormattingEnabled = True
-        Me.ComboBoxName.Location = New System.Drawing.Point(208, 238)
-        Me.ComboBoxName.Name = "ComboBoxName"
-        Me.ComboBoxName.Size = New System.Drawing.Size(121, 21)
-        Me.ComboBoxName.TabIndex = 0
+        Me.ComboBoxNom.FormattingEnabled = True
+        Me.ComboBoxNom.Location = New System.Drawing.Point(237, 182)
+        Me.ComboBoxNom.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.ComboBoxNom.Name = "ComboBoxNom"
+        Me.ComboBoxNom.Size = New System.Drawing.Size(180, 28)
+        Me.ComboBoxNom.TabIndex = 0
         '
         'BtnJouer
         '
-        Me.BtnJouer.Location = New System.Drawing.Point(157, 301)
+        Me.BtnJouer.Location = New System.Drawing.Point(161, 253)
+        Me.BtnJouer.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.BtnJouer.Name = "BtnJouer"
-        Me.BtnJouer.Size = New System.Drawing.Size(125, 23)
+        Me.BtnJouer.Size = New System.Drawing.Size(188, 35)
         Me.BtnJouer.TabIndex = 1
         Me.BtnJouer.Text = "Jouer"
         Me.BtnJouer.UseVisualStyleBackColor = True
         '
         'BtnOptions
         '
-        Me.BtnOptions.Location = New System.Drawing.Point(157, 354)
+        Me.BtnOptions.Location = New System.Drawing.Point(161, 298)
+        Me.BtnOptions.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.BtnOptions.Name = "BtnOptions"
-        Me.BtnOptions.Size = New System.Drawing.Size(125, 23)
+        Me.BtnOptions.Size = New System.Drawing.Size(188, 35)
         Me.BtnOptions.TabIndex = 2
         Me.BtnOptions.Text = "Options"
         Me.BtnOptions.UseVisualStyleBackColor = True
         '
         'BtnScores
         '
-        Me.BtnScores.Location = New System.Drawing.Point(157, 411)
+        Me.BtnScores.Location = New System.Drawing.Point(161, 343)
+        Me.BtnScores.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.BtnScores.Name = "BtnScores"
-        Me.BtnScores.Size = New System.Drawing.Size(125, 23)
+        Me.BtnScores.Size = New System.Drawing.Size(188, 35)
         Me.BtnScores.TabIndex = 3
         Me.BtnScores.Text = "Score"
         Me.BtnScores.UseVisualStyleBackColor = True
         '
         'BtnQuitter
         '
-        Me.BtnQuitter.Location = New System.Drawing.Point(157, 470)
+        Me.BtnQuitter.Location = New System.Drawing.Point(161, 388)
+        Me.BtnQuitter.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.BtnQuitter.Name = "BtnQuitter"
-        Me.BtnQuitter.Size = New System.Drawing.Size(125, 23)
+        Me.BtnQuitter.Size = New System.Drawing.Size(188, 35)
         Me.BtnQuitter.TabIndex = 4
         Me.BtnQuitter.Text = "Quitter"
         Me.BtnQuitter.UseVisualStyleBackColor = True
         '
-        'LblName
+        'LblNom
         '
-        Me.LblName.AutoSize = True
-        Me.LblName.Location = New System.Drawing.Point(105, 241)
-        Me.LblName.Name = "LblName"
-        Me.LblName.Size = New System.Drawing.Size(82, 13)
-        Me.LblName.TabIndex = 5
-        Me.LblName.Text = "Entre ton nom : "
+        Me.LblNom.AutoSize = True
+        Me.LblNom.Location = New System.Drawing.Point(83, 187)
+        Me.LblNom.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.LblNom.Name = "LblNom"
+        Me.LblNom.Size = New System.Drawing.Size(142, 20)
+        Me.LblNom.TabIndex = 5
+        Me.LblNom.Text = "Entrez votre nom : "
         '
-        'FormAccueuil
+        'FormMenu
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(455, 617)
-        Me.Controls.Add(Me.LblName)
+        Me.ClientSize = New System.Drawing.Size(526, 430)
+        Me.Controls.Add(Me.LblNom)
         Me.Controls.Add(Me.BtnQuitter)
         Me.Controls.Add(Me.BtnScores)
         Me.Controls.Add(Me.BtnOptions)
         Me.Controls.Add(Me.BtnJouer)
-        Me.Controls.Add(Me.ComboBoxName)
-        Me.Name = "FormAccueuil"
-        Me.Text = "Accueil"
+        Me.Controls.Add(Me.ComboBoxNom)
+        Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.Name = "FormMenu"
+        Me.Text = "Menu principal"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
-    Friend WithEvents ComboBoxName As ComboBox
+    Friend WithEvents ComboBoxNom As ComboBox
     Friend WithEvents BtnJouer As Button
     Friend WithEvents BtnOptions As Button
     Friend WithEvents BtnScores As Button
     Friend WithEvents BtnQuitter As Button
-    Friend WithEvents LblName As Label
+    Friend WithEvents LblNom As Label
 End Class

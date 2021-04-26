@@ -10,3 +10,16 @@ C:\Users\You\Documents\Projet-IHM\Projet IHM\Projet IHM\obj\Debug\Projet IHM.exe
 C:\Users\You\Documents\Projet-IHM\Projet IHM\Projet IHM\obj\Debug\Projet IHM.xml
 C:\Users\You\Documents\Projet-IHM\Projet IHM\Projet IHM\obj\Debug\Projet IHM.pdb
 C:\Users\You\Documents\Projet-IHM\Projet IHM\Projet IHM\obj\Debug\Projet_IHM.FormJeu.resources
+D:\Cours\IHM\Période D IHM\Projet IHM\Projet IHM code\Projet-IHM\Projet IHM\Projet IHM\obj\Debug\Projet IHM.vbprojAssemblyReference.cache
+D:\Cours\IHM\Période D IHM\Projet IHM\Projet IHM code\Projet-IHM\Projet IHM\Projet IHM\obj\Debug\Projet_IHM.FormJeu.resources
+D:\Cours\IHM\Période D IHM\Projet IHM\Projet IHM code\Projet-IHM\Projet IHM\Projet IHM\obj\Debug\Projet_IHM.Resources.resources
+D:\Cours\IHM\Période D IHM\Projet IHM\Projet IHM code\Projet-IHM\Projet IHM\Projet IHM\obj\Debug\Projet IHM.vbproj.GenerateResource.cache
+D:\Cours\IHM\Période D IHM\Projet IHM\Projet IHM code\Projet-IHM\Projet IHM\Projet IHM\obj\Debug\Projet IHM.vbproj.CoreCompileInputs.cache
+D:\Cours\IHM\Période D IHM\Projet IHM\Projet IHM code\Projet-IHM\Projet IHM\Projet IHM\obj\Debug\Projet IHM.exe
+D:\Cours\IHM\Période D IHM\Projet IHM\Projet IHM code\Projet-IHM\Projet IHM\Projet IHM\obj\Debug\Projet IHM.xml
+D:\Cours\IHM\Période D IHM\Projet IHM\Projet IHM code\Projet-IHM\Projet IHM\Projet IHM\obj\Debug\Projet IHM.pdb
+D:\Cours\IHM\Période D IHM\Projet IHM\Projet IHM code\Projet-IHM\Projet IHM\Projet IHM\bin\Debug\Projet IHM.exe.config
+D:\Cours\IHM\Période D IHM\Projet IHM\Projet IHM code\Projet-IHM\Projet IHM\Projet IHM\bin\Debug\Projet IHM.exe
+D:\Cours\IHM\Période D IHM\Projet IHM\Projet IHM code\Projet-IHM\Projet IHM\Projet IHM\bin\Debug\Projet IHM.pdb
+D:\Cours\IHM\Période D IHM\Projet IHM\Projet IHM code\Projet-IHM\Projet IHM\Projet IHM\bin\Debug\Projet IHM.xml
+D:\Cours\IHM\Période D IHM\Projet IHM\Projet IHM code\Projet-IHM\Projet IHM\Projet IHM\obj\Debug\Projet_IHM.FormMenu.resources

@@ -73,17 +73,11 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Form1.vb">
+    <Compile Include="FormMenu.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAccueuil.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormAccueuil.Designer.vb">
-      <DependentUpon>FormAccueuil.vb</DependentUpon>
+    <Compile Include="FormMenu.Designer.vb">
+      <DependentUpon>FormMenu.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormJeu.Designer.vb">
@@ -116,11 +110,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormAccueuil.resx">
-      <DependentUpon>FormAccueuil.vb</DependentUpon>
+    <EmbeddedResource Include="FormMenu.resx">
+      <DependentUpon>FormMenu.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormJeu.resx">
       <DependentUpon>FormJeu.vb</DependentUpon>
