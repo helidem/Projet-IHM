@@ -73,17 +73,30 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.vb">
+    <Compile Include="FormAccueuil.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <Compile Include="FormAccueuil.Designer.vb">
+      <DependentUpon>FormAccueuil.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormJeu.Designer.vb">
+      <DependentUpon>FormJeu.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormJeu.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormScores.Designer.vb">
+      <DependentUpon>FormScores.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormScores.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -97,6 +110,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FormAccueuil.resx">
+      <DependentUpon>FormAccueuil.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormJeu.resx">
+      <DependentUpon>FormJeu.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
@@ -115,6 +134,14 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\BackCard.png" />
+    <Content Include="Images\Card0.png" />
+    <Content Include="Images\Card1.png" />
+    <Content Include="Images\Card2.png" />
+    <Content Include="Images\Card3.png" />
+    <Content Include="Images\Card4.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

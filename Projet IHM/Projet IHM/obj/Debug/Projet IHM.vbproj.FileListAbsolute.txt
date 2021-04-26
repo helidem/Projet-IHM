@@ -1,0 +1,12 @@
+C:\Users\You\Documents\Projet-IHM\Projet IHM\Projet IHM\bin\Debug\Projet IHM.exe.config
+C:\Users\You\Documents\Projet-IHM\Projet IHM\Projet IHM\bin\Debug\Projet IHM.exe
+C:\Users\You\Documents\Projet-IHM\Projet IHM\Projet IHM\bin\Debug\Projet IHM.pdb
+C:\Users\You\Documents\Projet-IHM\Projet IHM\Projet IHM\bin\Debug\Projet IHM.xml
+C:\Users\You\Documents\Projet-IHM\Projet IHM\Projet IHM\obj\Debug\Projet_IHM.FormAccueuil.resources
+C:\Users\You\Documents\Projet-IHM\Projet IHM\Projet IHM\obj\Debug\Projet_IHM.Resources.resources
+C:\Users\You\Documents\Projet-IHM\Projet IHM\Projet IHM\obj\Debug\Projet IHM.vbproj.GenerateResource.cache
+C:\Users\You\Documents\Projet-IHM\Projet IHM\Projet IHM\obj\Debug\Projet IHM.vbproj.CoreCompileInputs.cache
+C:\Users\You\Documents\Projet-IHM\Projet IHM\Projet IHM\obj\Debug\Projet IHM.exe
+C:\Users\You\Documents\Projet-IHM\Projet IHM\Projet IHM\obj\Debug\Projet IHM.xml
+C:\Users\You\Documents\Projet-IHM\Projet IHM\Projet IHM\obj\Debug\Projet IHM.pdb
+C:\Users\You\Documents\Projet-IHM\Projet IHM\Projet IHM\obj\Debug\Projet_IHM.FormJeu.resources
