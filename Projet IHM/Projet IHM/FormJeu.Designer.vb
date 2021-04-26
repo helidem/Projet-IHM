@@ -30,19 +30,21 @@ Partial Class FormJeu
         '
         Me.PictureBox1.Image = Global.Projet_IHM.My.Resources.Resources.BackCard
         Me.PictureBox1.InitialImage = Global.Projet_IHM.My.Resources.Resources.BackCard
-        Me.PictureBox1.Location = New System.Drawing.Point(56, 37)
-        Me.PictureBox1.MinimumSize = New System.Drawing.Size(1, 1)
+        Me.PictureBox1.Location = New System.Drawing.Point(84, 57)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.PictureBox1.MinimumSize = New System.Drawing.Size(2, 2)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(90, 126)
+        Me.PictureBox1.Size = New System.Drawing.Size(91, 126)
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
         '
         'FormJeu
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1249, 683)
+        Me.ClientSize = New System.Drawing.Size(1874, 1050)
         Me.Controls.Add(Me.PictureBox1)
+        Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "FormJeu"
         Me.Text = "FormJeu"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()

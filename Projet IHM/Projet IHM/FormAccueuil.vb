@@ -18,7 +18,6 @@
         If e.KeyChar = vbBack Then 'ajouter les tirets et les chiffres
 
             If ComboBoxName.Text.Length - 1 > 1 Then
-                'BtnJouer.Enabled = True
                 check()
             End If
             Exit Sub
