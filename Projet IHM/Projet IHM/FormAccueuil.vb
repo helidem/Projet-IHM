@@ -23,6 +23,8 @@
             Exit Sub
         End If
 
+        'yo bg
+
         If Not Char.IsLetter(e.KeyChar) Then
             e.Handled = True
         End If
