@@ -23,8 +23,4 @@
     Private Sub afficheNomJoueur()
         LblJoueurModif.Text = FormMenu.ComboBoxNom.Text
     End Sub
-
-    Private Sub LabelImg1_Click(sender As Object, e As EventArgs) Handles LabelImg1.Click
-
-    End Sub
 End Class

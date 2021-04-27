@@ -25,3 +25,4 @@ D:\Cours\IHM\Période D IHM\Projet IHM\Projet IHM code\Projet-IHM\Projet IHM\Pro
 C:\Users\You\Documents\Projet-IHM\Projet IHM\Projet IHM\obj\Debug\Projet IHM.vbprojAssemblyReference.cache
 C:\Users\You\Documents\Projet-IHM\Projet IHM\Projet IHM\obj\Debug\Projet_IHM.FormMenu.resources
 C:\Users\You\Documents\Projet-IHM\Projet IHM\Projet IHM\obj\Debug\Projet_IHM.FormScores.resources
+D:\Cours\IHM\Période D IHM\Projet IHM\Projet IHM code\Projet-IHM\Projet IHM\Projet IHM\obj\Debug\Projet_IHM.FormScores.resources
