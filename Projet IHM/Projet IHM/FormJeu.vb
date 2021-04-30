@@ -7,6 +7,8 @@
     Dim TagcartesChoisies() As Integer = {-1, -1, -1, -1} '-1 : pas choisi
     Dim indexchoix As Integer
     Dim nomsCartesChoisies() As String = {"", "", "", ""}
+    Dim serieTerminée() As Integer = {-1, -1, -1, -1}
+    Dim nbSeriesterminées As Integer = 0
 
     '-----------------------------------------------------------------------------------------------
     'Load
@@ -62,6 +64,9 @@
     Private Sub click_carte(sender As Object, e As EventArgs) Handles LabelImg1.Click, LabelImg3.Click, LabelImg2.Click, LabelImg9.Click, LabelImg8.Click, LabelImg7.Click, LabelImg6.Click, LabelImg5.Click, LabelImg4.Click, LabelImg20.Click, LabelImg19.Click, LabelImg18.Click, LabelImg17.Click, LabelImg16.Click, LabelImg15.Click, LabelImg14.Click, LabelImg13.Click, LabelImg12.Click, LabelImg11.Click, LabelImg10.Click
         Debug.WriteLine(sender.Tag)
         sender.image = ImageList.Images(sender.tag) 'permet d'afficher la carte
+        Debug.WriteLine("#----")
+        Debug.WriteLine(indexchoix)
+        Debug.WriteLine("----#")
 
         If Not carteUnique(sender.name) Then
             Exit Sub
@@ -70,6 +75,15 @@
         End If
 
         TagcartesChoisies(indexchoix) = sender.tag
+
+        If serieTermiée() Then
+            serieTerminée(nbSeriesterminées) = sender.tag
+            nbSeriesterminées = nbSeriesterminées + 1
+            retournerToutesLesCartes()
+            Exit Sub
+        End If
+
+
 
         If indexchoix = 0 Then
             premierchoix()
@@ -86,8 +100,13 @@
     End Sub
 
     Private Sub retournerToutesLesCartes()
-
+        'carte.Tag = serieTerminée(nbSeriesterminées)
         For Each carte As Label In PnlCarte.Controls
+            'If carte.Tag est dans serieterminée()
+            '    alors tu la touche pas
+            If serieTerminée.Contains(carte.Tag) Then
+                Continue For
+            End If
             carte.Image = ImageList.Images(5)
         Next carte
         indexchoix = 0
@@ -95,6 +114,7 @@
         'reinitialiser le tableau
         For i As Integer = 0 To nomsCartesChoisies.Length - 1
             nomsCartesChoisies(i) = ""
+            TagcartesChoisies(i) = -1
         Next
     End Sub
 
@@ -118,6 +138,15 @@
     Private Function carteUnique(ByVal name As String) As Boolean 'retourne faux si la caret a deja été choisie
         For i As Integer = 0 To nomsCartesChoisies.Length - 1
             If name = nomsCartesChoisies(i) Then
+                Return False
+            End If
+        Next
+        Return True
+    End Function
+    Private Function serieTermiée() As Boolean
+        'si toutes les elements du tab tagcarteschoisies sont identiques
+        For i As Integer = 0 To TagcartesChoisies.Length - 1
+            If Not TagcartesChoisies(0).Equals(TagcartesChoisies(i)) Then
                 Return False
             End If
         Next
