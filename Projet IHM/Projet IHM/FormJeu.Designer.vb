@@ -54,31 +54,28 @@ Partial Class FormJeu
         'LblJoueur
         '
         Me.LblJoueur.AutoSize = True
-        Me.LblJoueur.Location = New System.Drawing.Point(27, 8)
-        Me.LblJoueur.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.LblJoueur.Location = New System.Drawing.Point(40, 12)
         Me.LblJoueur.Name = "LblJoueur"
-        Me.LblJoueur.Size = New System.Drawing.Size(45, 13)
+        Me.LblJoueur.Size = New System.Drawing.Size(66, 20)
         Me.LblJoueur.TabIndex = 41
         Me.LblJoueur.Text = "Joueur :"
         '
         'LblJoueurModif
         '
         Me.LblJoueurModif.AutoSize = True
-        Me.LblJoueurModif.Location = New System.Drawing.Point(72, 8)
-        Me.LblJoueurModif.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.LblJoueurModif.Location = New System.Drawing.Point(108, 12)
         Me.LblJoueurModif.Name = "LblJoueurModif"
-        Me.LblJoueurModif.Size = New System.Drawing.Size(91, 13)
+        Me.LblJoueurModif.Size = New System.Drawing.Size(135, 20)
         Me.LblJoueurModif.TabIndex = 42
         Me.LblJoueurModif.Text = "<Nom du Joueur>"
         '
         'LabelImg1
         '
-        Me.LabelImg1.Image = Global.Projet_IHM.My.Resources.Resources.BackCard
-        Me.LabelImg1.Location = New System.Drawing.Point(19, 10)
+        Me.LabelImg1.Location = New System.Drawing.Point(28, 15)
+        Me.LabelImg1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelImg1.Name = "LabelImg1"
-        Me.LabelImg1.Size = New System.Drawing.Size(97, 137)
+        Me.LabelImg1.Size = New System.Drawing.Size(146, 211)
         Me.LabelImg1.TabIndex = 43
-        Me.LabelImg1.Text = "Label1"
         '
         'PnlCarte
         '
@@ -102,182 +99,162 @@ Partial Class FormJeu
         Me.PnlCarte.Controls.Add(Me.LabelImg3)
         Me.PnlCarte.Controls.Add(Me.LabelImg2)
         Me.PnlCarte.Controls.Add(Me.LabelImg1)
-        Me.PnlCarte.Location = New System.Drawing.Point(8, 58)
-        Me.PnlCarte.Margin = New System.Windows.Forms.Padding(2)
+        Me.PnlCarte.Location = New System.Drawing.Point(12, 89)
         Me.PnlCarte.Name = "PnlCarte"
-        Me.PnlCarte.Size = New System.Drawing.Size(545, 570)
+        Me.PnlCarte.Size = New System.Drawing.Size(818, 877)
         Me.PnlCarte.TabIndex = 20
         '
         'LabelImg20
         '
-        Me.LabelImg20.Image = Global.Projet_IHM.My.Resources.Resources.BackCard
-        Me.LabelImg20.Location = New System.Drawing.Point(431, 421)
+        Me.LabelImg20.Location = New System.Drawing.Point(646, 648)
+        Me.LabelImg20.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelImg20.Name = "LabelImg20"
-        Me.LabelImg20.Size = New System.Drawing.Size(97, 137)
+        Me.LabelImg20.Size = New System.Drawing.Size(146, 211)
         Me.LabelImg20.TabIndex = 62
-        Me.LabelImg20.Text = "Label1"
         '
         'LabelImg19
         '
-        Me.LabelImg19.Image = Global.Projet_IHM.My.Resources.Resources.BackCard
-        Me.LabelImg19.Location = New System.Drawing.Point(328, 421)
+        Me.LabelImg19.Location = New System.Drawing.Point(492, 648)
+        Me.LabelImg19.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelImg19.Name = "LabelImg19"
-        Me.LabelImg19.Size = New System.Drawing.Size(97, 137)
+        Me.LabelImg19.Size = New System.Drawing.Size(146, 211)
         Me.LabelImg19.TabIndex = 61
-        Me.LabelImg19.Text = "Label14"
         '
         'LabelImg18
         '
-        Me.LabelImg18.Image = Global.Projet_IHM.My.Resources.Resources.BackCard
-        Me.LabelImg18.Location = New System.Drawing.Point(225, 421)
+        Me.LabelImg18.Location = New System.Drawing.Point(338, 648)
+        Me.LabelImg18.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelImg18.Name = "LabelImg18"
-        Me.LabelImg18.Size = New System.Drawing.Size(97, 137)
+        Me.LabelImg18.Size = New System.Drawing.Size(146, 211)
         Me.LabelImg18.TabIndex = 60
-        Me.LabelImg18.Text = "Label1"
         '
         'LabelImg17
         '
-        Me.LabelImg17.Image = Global.Projet_IHM.My.Resources.Resources.BackCard
-        Me.LabelImg17.Location = New System.Drawing.Point(122, 421)
+        Me.LabelImg17.Location = New System.Drawing.Point(183, 648)
+        Me.LabelImg17.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelImg17.Name = "LabelImg17"
-        Me.LabelImg17.Size = New System.Drawing.Size(97, 137)
+        Me.LabelImg17.Size = New System.Drawing.Size(146, 211)
         Me.LabelImg17.TabIndex = 59
-        Me.LabelImg17.Text = "Label1"
         '
         'LabelImg16
         '
-        Me.LabelImg16.Image = Global.Projet_IHM.My.Resources.Resources.BackCard
-        Me.LabelImg16.Location = New System.Drawing.Point(19, 421)
+        Me.LabelImg16.Location = New System.Drawing.Point(28, 648)
+        Me.LabelImg16.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelImg16.Name = "LabelImg16"
-        Me.LabelImg16.Size = New System.Drawing.Size(97, 137)
+        Me.LabelImg16.Size = New System.Drawing.Size(146, 211)
         Me.LabelImg16.TabIndex = 58
-        Me.LabelImg16.Text = "Label1"
         '
         'LabelImg15
         '
-        Me.LabelImg15.Image = Global.Projet_IHM.My.Resources.Resources.BackCard
-        Me.LabelImg15.Location = New System.Drawing.Point(431, 284)
+        Me.LabelImg15.Location = New System.Drawing.Point(646, 437)
+        Me.LabelImg15.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelImg15.Name = "LabelImg15"
-        Me.LabelImg15.Size = New System.Drawing.Size(97, 137)
+        Me.LabelImg15.Size = New System.Drawing.Size(146, 211)
         Me.LabelImg15.TabIndex = 57
-        Me.LabelImg15.Text = "Label1"
         '
         'LabelImg14
         '
-        Me.LabelImg14.Image = Global.Projet_IHM.My.Resources.Resources.BackCard
-        Me.LabelImg14.Location = New System.Drawing.Point(328, 284)
+        Me.LabelImg14.Location = New System.Drawing.Point(492, 437)
+        Me.LabelImg14.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelImg14.Name = "LabelImg14"
-        Me.LabelImg14.Size = New System.Drawing.Size(97, 137)
+        Me.LabelImg14.Size = New System.Drawing.Size(146, 211)
         Me.LabelImg14.TabIndex = 56
-        Me.LabelImg14.Text = "Label14"
         '
         'LabelImg13
         '
-        Me.LabelImg13.Image = Global.Projet_IHM.My.Resources.Resources.BackCard
-        Me.LabelImg13.Location = New System.Drawing.Point(225, 284)
+        Me.LabelImg13.Location = New System.Drawing.Point(338, 437)
+        Me.LabelImg13.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelImg13.Name = "LabelImg13"
-        Me.LabelImg13.Size = New System.Drawing.Size(97, 137)
+        Me.LabelImg13.Size = New System.Drawing.Size(146, 211)
         Me.LabelImg13.TabIndex = 55
-        Me.LabelImg13.Text = "Label1"
         '
         'LabelImg12
         '
-        Me.LabelImg12.Image = Global.Projet_IHM.My.Resources.Resources.BackCard
-        Me.LabelImg12.Location = New System.Drawing.Point(122, 284)
+        Me.LabelImg12.Location = New System.Drawing.Point(183, 437)
+        Me.LabelImg12.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelImg12.Name = "LabelImg12"
-        Me.LabelImg12.Size = New System.Drawing.Size(97, 137)
+        Me.LabelImg12.Size = New System.Drawing.Size(146, 211)
         Me.LabelImg12.TabIndex = 54
-        Me.LabelImg12.Text = "Label1"
         '
         'LabelImg11
         '
-        Me.LabelImg11.Image = Global.Projet_IHM.My.Resources.Resources.BackCard
-        Me.LabelImg11.Location = New System.Drawing.Point(19, 284)
+        Me.LabelImg11.Location = New System.Drawing.Point(28, 437)
+        Me.LabelImg11.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelImg11.Name = "LabelImg11"
-        Me.LabelImg11.Size = New System.Drawing.Size(97, 137)
+        Me.LabelImg11.Size = New System.Drawing.Size(146, 211)
         Me.LabelImg11.TabIndex = 53
-        Me.LabelImg11.Text = "Label1"
         '
         'LabelImg10
         '
-        Me.LabelImg10.Image = Global.Projet_IHM.My.Resources.Resources.BackCard
-        Me.LabelImg10.Location = New System.Drawing.Point(431, 147)
+        Me.LabelImg10.Location = New System.Drawing.Point(646, 226)
+        Me.LabelImg10.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelImg10.Name = "LabelImg10"
-        Me.LabelImg10.Size = New System.Drawing.Size(97, 137)
+        Me.LabelImg10.Size = New System.Drawing.Size(146, 211)
         Me.LabelImg10.TabIndex = 52
-        Me.LabelImg10.Text = "Label10"
         '
         'LabelImg9
         '
-        Me.LabelImg9.Image = Global.Projet_IHM.My.Resources.Resources.BackCard
-        Me.LabelImg9.Location = New System.Drawing.Point(328, 147)
+        Me.LabelImg9.Location = New System.Drawing.Point(492, 226)
+        Me.LabelImg9.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelImg9.Name = "LabelImg9"
-        Me.LabelImg9.Size = New System.Drawing.Size(97, 137)
+        Me.LabelImg9.Size = New System.Drawing.Size(146, 211)
         Me.LabelImg9.TabIndex = 51
-        Me.LabelImg9.Text = "Label1"
         '
         'LabelImg8
         '
-        Me.LabelImg8.Image = Global.Projet_IHM.My.Resources.Resources.BackCard
-        Me.LabelImg8.Location = New System.Drawing.Point(225, 147)
+        Me.LabelImg8.Location = New System.Drawing.Point(338, 226)
+        Me.LabelImg8.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelImg8.Name = "LabelImg8"
-        Me.LabelImg8.Size = New System.Drawing.Size(97, 137)
+        Me.LabelImg8.Size = New System.Drawing.Size(146, 211)
         Me.LabelImg8.TabIndex = 50
-        Me.LabelImg8.Text = "Label1"
         '
         'LabelImg7
         '
-        Me.LabelImg7.Image = Global.Projet_IHM.My.Resources.Resources.BackCard
-        Me.LabelImg7.Location = New System.Drawing.Point(122, 147)
+        Me.LabelImg7.Location = New System.Drawing.Point(183, 226)
+        Me.LabelImg7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelImg7.Name = "LabelImg7"
-        Me.LabelImg7.Size = New System.Drawing.Size(97, 137)
+        Me.LabelImg7.Size = New System.Drawing.Size(146, 211)
         Me.LabelImg7.TabIndex = 49
-        Me.LabelImg7.Text = "Label1"
         '
         'LabelImg6
         '
-        Me.LabelImg6.Image = Global.Projet_IHM.My.Resources.Resources.BackCard
-        Me.LabelImg6.Location = New System.Drawing.Point(19, 147)
+        Me.LabelImg6.Location = New System.Drawing.Point(28, 226)
+        Me.LabelImg6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelImg6.Name = "LabelImg6"
-        Me.LabelImg6.Size = New System.Drawing.Size(97, 137)
+        Me.LabelImg6.Size = New System.Drawing.Size(146, 211)
         Me.LabelImg6.TabIndex = 48
-        Me.LabelImg6.Text = "Label6"
         '
         'LabelImg5
         '
-        Me.LabelImg5.Image = Global.Projet_IHM.My.Resources.Resources.BackCard
-        Me.LabelImg5.Location = New System.Drawing.Point(431, 10)
+        Me.LabelImg5.Location = New System.Drawing.Point(646, 15)
+        Me.LabelImg5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelImg5.Name = "LabelImg5"
-        Me.LabelImg5.Size = New System.Drawing.Size(97, 137)
+        Me.LabelImg5.Size = New System.Drawing.Size(146, 211)
         Me.LabelImg5.TabIndex = 47
-        Me.LabelImg5.Text = "Label1"
         '
         'LabelImg4
         '
-        Me.LabelImg4.Image = Global.Projet_IHM.My.Resources.Resources.BackCard
-        Me.LabelImg4.Location = New System.Drawing.Point(328, 10)
+        Me.LabelImg4.Location = New System.Drawing.Point(492, 15)
+        Me.LabelImg4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelImg4.Name = "LabelImg4"
-        Me.LabelImg4.Size = New System.Drawing.Size(97, 137)
+        Me.LabelImg4.Size = New System.Drawing.Size(146, 211)
         Me.LabelImg4.TabIndex = 46
-        Me.LabelImg4.Text = "Label1"
         '
         'LabelImg3
         '
-        Me.LabelImg3.Image = Global.Projet_IHM.My.Resources.Resources.BackCard
-        Me.LabelImg3.Location = New System.Drawing.Point(225, 10)
+        Me.LabelImg3.Location = New System.Drawing.Point(338, 15)
+        Me.LabelImg3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelImg3.Name = "LabelImg3"
-        Me.LabelImg3.Size = New System.Drawing.Size(97, 137)
+        Me.LabelImg3.Size = New System.Drawing.Size(146, 211)
         Me.LabelImg3.TabIndex = 45
-        Me.LabelImg3.Text = "Label1"
         '
         'LabelImg2
         '
-        Me.LabelImg2.Image = Global.Projet_IHM.My.Resources.Resources.BackCard
-        Me.LabelImg2.Location = New System.Drawing.Point(122, 10)
+        Me.LabelImg2.Location = New System.Drawing.Point(183, 15)
+        Me.LabelImg2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelImg2.Name = "LabelImg2"
-        Me.LabelImg2.Size = New System.Drawing.Size(97, 137)
+        Me.LabelImg2.Size = New System.Drawing.Size(146, 211)
         Me.LabelImg2.TabIndex = 44
-        Me.LabelImg2.Text = "Label1"
         '
         'ImageList
         '
@@ -292,12 +269,13 @@ Partial Class FormJeu
         '
         'FormJeu
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(685, 659)
+        Me.ClientSize = New System.Drawing.Size(1028, 1014)
         Me.Controls.Add(Me.LblJoueurModif)
         Me.Controls.Add(Me.LblJoueur)
         Me.Controls.Add(Me.PnlCarte)
+        Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "FormJeu"
         Me.Text = "FormJeu"
         Me.PnlCarte.ResumeLayout(False)
