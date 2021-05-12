@@ -73,6 +73,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormSauvegardeNom.designer.vb">
+      <DependentUpon>FormSauvegardeNom.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormSauvegardeNom.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormMenu.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +116,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FormSauvegardeNom.resx">
+      <DependentUpon>FormSauvegardeNom.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMenu.resx">
       <DependentUpon>FormMenu.vb</DependentUpon>
     </EmbeddedResource>
