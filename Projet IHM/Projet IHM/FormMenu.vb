@@ -5,12 +5,18 @@
     '-----------------------------------------------------------------------------------------------
 
     Private Sub FormMenu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        BtnJouer.Enabled = False
+        'Enlève le ControlBox
         Me.ControlBox = False
+        'Permet de pouvoir déplacer la fenêtre, mais de ne pas pouvoir la redimensionner
+        Me.FormBorderStyle = FormBorderStyle.FixedSingle
+        'Adapte la taille de la fenêtre automatiquement
+        Me.AutoSize = True
+
+        BtnJouer.Enabled = False
     End Sub
 
     '-----------------------------------------------------------------------------------------------
-    'ComboBoxNom
+    'ComboBox Nom
     '-----------------------------------------------------------------------------------------------
 
     Private Sub ComboBoxName_KeyPress(sender As Object, e As KeyPressEventArgs) Handles ComboBoxNom.KeyPress
@@ -34,8 +40,9 @@
     Private Sub ComboBoxNom_LostFocus(sender As Object, e As EventArgs) Handles ComboBoxNom.LostFocus
         sender.Text = StrConv(sender.Text, vbProperCase)
     End Sub
+
     '-----------------------------------------------------------------------------------------------
-    'ButtonJouer
+    'Bouton Jouer
     '-----------------------------------------------------------------------------------------------
 
     Private Sub BtnJouer_Click(sender As Object, e As EventArgs) Handles BtnJouer.Click
@@ -44,7 +51,7 @@
     End Sub
 
     '-----------------------------------------------------------------------------------------------
-    'ButtonQuitter
+    'Bouton Quitter
     '-----------------------------------------------------------------------------------------------
 
     Private Sub BtnQuitter_Click(sender As Object, e As EventArgs) Handles BtnQuitter.Click

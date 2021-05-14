@@ -12,6 +12,9 @@
     'Tableau précédent, mais mélangé dans la fonction mélanger
     Dim tabMelange As Integer() = New Integer(liste.Length - 1) {}
 
+    'Vérifie si c'est la première carte qui a été tirée de tout le jeu
+    Dim PremiereCarte As Boolean = True
+
     'Tableau mémorisant le tag des cartes sélectionnées simultanéments
     'Initialisé à -1, car aucune carte n'est sélectionnée
     Dim tagCartesChoisies() As Integer = {-1, -1, -1, -1}
@@ -24,7 +27,7 @@
 
     'Tableau mémorisant le tag des cartes trouvées
     'Initialisé à -1, car aucune série n'a été trouvée
-    Dim seriesTerminees() As Integer = {-1, -1, -1, -1}
+    Dim seriesTerminees() As Integer = {-1, -1, -1, -1, -1}
     'Retient le nombre de série(s) terminée(s), et donc l'index du tableau précédent
     Dim nbSeriesTerminees As Integer = 0
 
@@ -33,11 +36,17 @@
     '-----------------------------------------------------------------------------------------------
 
     Private Sub FormJeu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'Enlève le ControlBox
+        Me.ControlBox = False
+        'Permet de pouvoir déplacer la fenêtre, mais de ne pas pouvoir la redimensionner
+        Me.FormBorderStyle = FormBorderStyle.FixedSingle
+        'Adapte la taille de la fenêtre automatiquement
+        Me.AutoSize = True
+
         retournerToutesLesCartes()
 
-        Me.ControlBox = False
-
         afficheNomJoueur()
+        LblTpsRestantModif.Text = "01:30"
 
         Dim ListeCartes As List(Of PictureBox)
 
@@ -107,11 +116,31 @@
     End Sub
 
     '-----------------------------------------------------------------------------------------------
+    'Timer Temps Restant
+    '-----------------------------------------------------------------------------------------------
+    Private Sub TimerTempsRestant_Tick(sender As Object, e As EventArgs) Handles TimerTempsRestant.Tick
+        LblTpsRestantModif.Text =
+            FormatDateTime(DateAdd(DateInterval.Second, -1, DateTime.Parse(LblTpsRestantModif.Text)), DateFormat.ShortTime)
+
+        If LblTpsRestantModif.Text = "00:00" Then
+            partieFinie()
+        End If
+    End Sub
+
+    '-----------------------------------------------------------------------------------------------
     'METHODE PRINCIPALE
     'A CHAQUE CARTE CLIQUEE
     '-----------------------------------------------------------------------------------------------
 
     Private Sub CarteCliquee(sender As Object, e As EventArgs) Handles LabelImg1.Click, LabelImg3.Click, LabelImg2.Click, LabelImg9.Click, LabelImg8.Click, LabelImg7.Click, LabelImg6.Click, LabelImg5.Click, LabelImg4.Click, LabelImg20.Click, LabelImg19.Click, LabelImg18.Click, LabelImg17.Click, LabelImg16.Click, LabelImg15.Click, LabelImg14.Click, LabelImg13.Click, LabelImg12.Click, LabelImg11.Click, LabelImg10.Click
+        'Lance le timer dès que la première carte est cliquée
+        If PremiereCarte Then
+            'Intervalle mis à 1000 pour compter 1 seconde
+            TimerTempsRestant.Interval = 1000
+            TimerTempsRestant.Enabled = True
+            PremiereCarte = False
+        End If
+
         'Permet d'afficher la carte
         sender.image = ImageList.Images(sender.tag)
 
@@ -131,6 +160,9 @@
             seriesTerminees(nbSeriesTerminees) = sender.tag
             nbSeriesTerminees = nbSeriesTerminees + 1
             retournerToutesLesCartes()
+            If Not seriesTerminees.Contains(-1) Then
+                partieFinie()
+            End If
             Exit Sub
         End If
 
@@ -194,4 +226,27 @@
         Return True
     End Function
 
+    '-----------------------------------------------------------------------------------------------
+    'Partie Finie
+    '-----------------------------------------------------------------------------------------------
+
+    Private Sub partieFinie()
+        TimerTempsRestant.Enabled = False
+        If MsgBox("La partie est finie", vbOKOnly, "Partie terminée") = vbOK Then
+            Me.Close()
+            FormMenu.Show()
+        End If
+
+    End Sub
+
+    '-----------------------------------------------------------------------------------------------
+    'Bouton Abandonner
+    '-----------------------------------------------------------------------------------------------
+    Private Sub BtnAbandonner_Click(sender As Object, e As EventArgs) Handles BtnAbandonner.Click
+        If MsgBox("Voulez-vous abandonner ?",
+                  vbCritical + vbYesNo + vbDefaultButton2, "Abandonner") = vbYes Then
+            Me.Close()
+            FormMenu.Show()
+        End If
+    End Sub
 End Class

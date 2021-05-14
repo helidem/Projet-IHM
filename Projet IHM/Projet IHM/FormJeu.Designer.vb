@@ -48,13 +48,17 @@ Partial Class FormJeu
         Me.LabelImg3 = New System.Windows.Forms.Label()
         Me.LabelImg2 = New System.Windows.Forms.Label()
         Me.ImageList = New System.Windows.Forms.ImageList(Me.components)
+        Me.LblTpsRestant = New System.Windows.Forms.Label()
+        Me.LblTpsRestantModif = New System.Windows.Forms.Label()
+        Me.BtnAbandonner = New System.Windows.Forms.Button()
+        Me.TimerTempsRestant = New System.Windows.Forms.Timer(Me.components)
         Me.PnlCarte.SuspendLayout()
         Me.SuspendLayout()
         '
         'LblJoueur
         '
         Me.LblJoueur.AutoSize = True
-        Me.LblJoueur.Location = New System.Drawing.Point(40, 12)
+        Me.LblJoueur.Location = New System.Drawing.Point(50, 29)
         Me.LblJoueur.Name = "LblJoueur"
         Me.LblJoueur.Size = New System.Drawing.Size(66, 20)
         Me.LblJoueur.TabIndex = 41
@@ -63,7 +67,7 @@ Partial Class FormJeu
         'LblJoueurModif
         '
         Me.LblJoueurModif.AutoSize = True
-        Me.LblJoueurModif.Location = New System.Drawing.Point(108, 12)
+        Me.LblJoueurModif.Location = New System.Drawing.Point(118, 29)
         Me.LblJoueurModif.Name = "LblJoueurModif"
         Me.LblJoueurModif.Size = New System.Drawing.Size(135, 20)
         Me.LblJoueurModif.TabIndex = 42
@@ -267,16 +271,50 @@ Partial Class FormJeu
         Me.ImageList.Images.SetKeyName(4, "Card4.png")
         Me.ImageList.Images.SetKeyName(5, "BackCard.png")
         '
+        'LblTpsRestant
+        '
+        Me.LblTpsRestant.AutoSize = True
+        Me.LblTpsRestant.Location = New System.Drawing.Point(334, 29)
+        Me.LblTpsRestant.Name = "LblTpsRestant"
+        Me.LblTpsRestant.Size = New System.Drawing.Size(119, 20)
+        Me.LblTpsRestant.TabIndex = 43
+        Me.LblTpsRestant.Text = "Temps restant :"
+        '
+        'LblTpsRestantModif
+        '
+        Me.LblTpsRestantModif.AutoSize = True
+        Me.LblTpsRestantModif.Location = New System.Drawing.Point(451, 29)
+        Me.LblTpsRestantModif.Name = "LblTpsRestantModif"
+        Me.LblTpsRestantModif.Size = New System.Drawing.Size(129, 20)
+        Me.LblTpsRestantModif.TabIndex = 44
+        Me.LblTpsRestantModif.Text = "<Temps restant>"
+        '
+        'BtnAbandonner
+        '
+        Me.BtnAbandonner.Location = New System.Drawing.Point(691, 18)
+        Me.BtnAbandonner.Name = "BtnAbandonner"
+        Me.BtnAbandonner.Size = New System.Drawing.Size(113, 43)
+        Me.BtnAbandonner.TabIndex = 45
+        Me.BtnAbandonner.Text = "Abandonner"
+        Me.BtnAbandonner.UseVisualStyleBackColor = True
+        '
+        'TimerTempsRestant
+        '
+        '
         'FormJeu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1028, 1014)
+        Me.ClientSize = New System.Drawing.Size(851, 1030)
+        Me.Controls.Add(Me.BtnAbandonner)
+        Me.Controls.Add(Me.LblTpsRestantModif)
+        Me.Controls.Add(Me.LblTpsRestant)
         Me.Controls.Add(Me.LblJoueurModif)
         Me.Controls.Add(Me.LblJoueur)
         Me.Controls.Add(Me.PnlCarte)
         Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "FormJeu"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "FormJeu"
         Me.PnlCarte.ResumeLayout(False)
         Me.ResumeLayout(False)
@@ -307,4 +345,8 @@ Partial Class FormJeu
     Friend WithEvents LabelImg18 As Label
     Friend WithEvents LabelImg17 As Label
     Friend WithEvents ImageList As ImageList
+    Friend WithEvents LblTpsRestant As Label
+    Friend WithEvents LblTpsRestantModif As Label
+    Friend WithEvents BtnAbandonner As Button
+    Friend WithEvents TimerTempsRestant As Timer
 End Class
