@@ -9,7 +9,7 @@
                 Exit Sub
             End If
         Next index
-        My.Computer.FileSystem.WriteAllText("C:\Users\You\Documents\test.txt", TextBox1.Text + ";", True)
+        My.Computer.FileSystem.WriteAllText("test.txt", TextBox1.Text + ";", True)
     End Sub
 
     Private Sub AfficherLesJoueurs(sender As Object, e As EventArgs) Handles ButtonAfficher.Click
@@ -24,7 +24,7 @@
     End Sub
 
     Private Sub update()
-        Dim FILE_NAME As String = "C:\Users\You\Documents\test.txt"
+        Dim FILE_NAME As String = "test.txt"
         Dim TextLine As String
         If System.IO.File.Exists(FILE_NAME) = True Then
             Dim objReader As New System.IO.StreamReader(FILE_NAME)

@@ -60,4 +60,9 @@
             Me.Close()
         End If
     End Sub
+
+    Private Sub BtnScores_Click(sender As Object, e As EventArgs) Handles BtnScores.Click
+        Me.Hide()
+        FormSauvegardeNom.Show()
+    End Sub
 End Class
