@@ -4,6 +4,8 @@
     'Attributs
     '-----------------------------------------------------------------------------------------------
 
+    Private TEMPS_PARTIE As Integer = 90
+
     'Pour générer aléatoirement le placement des cartes
     Private random As New Random
 
@@ -70,6 +72,8 @@
         For Each carte As Label In PnlCarte.Controls
             'Si la carte fait partie d'une série terminée
             If seriesTerminees.Contains(carte.Tag) Then
+                'On met l'image en noir et blanc
+                carte.Image = ImageList.Images(carte.Tag + 6)
                 'On passe au suivant
                 Continue For
             End If
@@ -152,9 +156,6 @@
             PremiereCarte = False
         End If
 
-        'Permet d'afficher la carte
-        sender.image = ImageList.Images(sender.tag)
-
         'Vérifie si la carte a déjà été sélectionnée
         If carteUnique(sender.name) Then
             'Met le nom de la carte dans le tableau nomsCartesChoisies()
@@ -167,6 +168,14 @@
         'Met le tag de la carte dans le tableau tagCartesChoisies()
         tagCartesChoisies(indexChoix) = sender.tag
 
+        'Vérifie si la carte cliquée fait partie d'une série déjà terminée
+        If carteCliqueSerieTerminee() Then
+            Exit Sub
+        End If
+
+        'Permet d'afficher la carte
+        sender.image = ImageList.Images(sender.tag)
+
         If serieTerminee() Then
             score += 1
             temps = conversionTemps()
@@ -176,10 +185,6 @@
             If Not seriesTerminees.Contains(-1) Then
                 partieFinie()
             End If
-            Exit Sub
-        End If
-
-        If carteCliqueSerieTerminee() Then
             Exit Sub
         End If
 
@@ -232,15 +237,12 @@
 
     'Convertit le temps restant en secondes écoulées
     Private Function conversionTemps() As Integer
-        Dim secondesEcoulees As Integer = 0 '00:16
-
+        Dim secondesEcoulees As Integer = 0
         secondesEcoulees = Integer.Parse(LblTpsRestantModif.Text.Chars(4)) 'Secondes
-
         secondesEcoulees += Integer.Parse(LblTpsRestantModif.Text.Chars(3)) * 10 'Dizaines de secondes
-
         secondesEcoulees += Integer.Parse(LblTpsRestantModif.Text.Chars(1)) * 60 'Minutes
-
-        Return temps - secondesEcoulees
+        secondesEcoulees += Integer.Parse(LblTpsRestantModif.Text.Chars(0)) * 600 'Dizaines de minutes
+        Return TEMPS_PARTIE - secondesEcoulees
     End Function
 
     'Vérifie si la série est terminée
@@ -278,12 +280,14 @@
     Private Sub partieFinie()
         TimerTempsRestant.Enabled = False
         If temps = 90 Then
-            If MsgBox("Vous n'avez trouvé aucun carré. Votre score est donc de " & score & "votre temps est de " & temps & " secondes.", vbOKOnly, "Partie perdue") = vbOK Then
+            If MsgBox("Vous n'avez trouvé aucun carré. Votre score est donc de " & score &
+                      ", et votre temps est de " & temps & " secondes.", vbOKOnly, "Partie perdue") = vbOK Then
                 Me.Close()
                 FormMenu.Show()
             End If
         Else
-            If MsgBox("La partie est finie. Votre score est de " & score & ", et votre temps est de " & temps & " secondes.", vbOKOnly, "Partie terminée") = vbOK Then
+            If MsgBox("La partie est finie. Votre score est de " & score &
+                      ", et votre temps est de " & temps & " secondes.", vbOKOnly, "Partie terminée") = vbOK Then
                 Me.Close()
                 FormMenu.Show()
             End If
