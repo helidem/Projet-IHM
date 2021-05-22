@@ -280,13 +280,13 @@
     Private Sub partieFinie()
         TimerTempsRestant.Enabled = False
         If temps = 90 Then
-            If MsgBox("Vous n'avez trouvé aucun carré. Votre score est donc de " & score &
+            If MsgBox(LblJoueurModif.Text & ", vous n'avez trouvé aucun carré. Votre score est donc de " & score &
                       ", et votre temps est de " & temps & " secondes.", vbOKOnly, "Partie perdue") = vbOK Then
                 Me.Close()
                 FormMenu.Show()
             End If
         Else
-            If MsgBox("La partie est finie. Votre score est de " & score &
+            If MsgBox(LblJoueurModif.Text & ", la partie est finie. Votre score est de " & score &
                       ", et votre temps est de " & temps & " secondes.", vbOKOnly, "Partie terminée") = vbOK Then
                 Me.Close()
                 FormMenu.Show()
