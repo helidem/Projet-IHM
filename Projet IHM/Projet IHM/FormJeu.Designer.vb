@@ -53,6 +53,8 @@ Partial Class FormJeu
         Me.BtnAbandonner = New System.Windows.Forms.Button()
         Me.TimerTempsRestant = New System.Windows.Forms.Timer(Me.components)
         Me.TimerVisionnerCarte = New System.Windows.Forms.Timer(Me.components)
+        Me.BtnReprendre = New System.Windows.Forms.Button()
+        Me.BtnPause = New System.Windows.Forms.Button()
         Me.PnlCarte.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -104,7 +106,7 @@ Partial Class FormJeu
         Me.PnlCarte.Controls.Add(Me.LabelImg3)
         Me.PnlCarte.Controls.Add(Me.LabelImg2)
         Me.PnlCarte.Controls.Add(Me.LabelImg1)
-        Me.PnlCarte.Location = New System.Drawing.Point(12, 89)
+        Me.PnlCarte.Location = New System.Drawing.Point(12, 147)
         Me.PnlCarte.Name = "PnlCarte"
         Me.PnlCarte.Size = New System.Drawing.Size(818, 877)
         Me.PnlCarte.TabIndex = 20
@@ -297,7 +299,7 @@ Partial Class FormJeu
         '
         'BtnAbandonner
         '
-        Me.BtnAbandonner.Location = New System.Drawing.Point(692, 18)
+        Me.BtnAbandonner.Location = New System.Drawing.Point(695, 18)
         Me.BtnAbandonner.Name = "BtnAbandonner"
         Me.BtnAbandonner.Size = New System.Drawing.Size(112, 43)
         Me.BtnAbandonner.TabIndex = 45
@@ -310,11 +312,31 @@ Partial Class FormJeu
         'TimerVisionnerCarte
         '
         '
+        'BtnReprendre
+        '
+        Me.BtnReprendre.Location = New System.Drawing.Point(695, 86)
+        Me.BtnReprendre.Name = "BtnReprendre"
+        Me.BtnReprendre.Size = New System.Drawing.Size(112, 43)
+        Me.BtnReprendre.TabIndex = 46
+        Me.BtnReprendre.Text = "Reprendre"
+        Me.BtnReprendre.UseVisualStyleBackColor = True
+        '
+        'BtnPause
+        '
+        Me.BtnPause.Location = New System.Drawing.Point(694, 86)
+        Me.BtnPause.Name = "BtnPause"
+        Me.BtnPause.Size = New System.Drawing.Size(112, 42)
+        Me.BtnPause.TabIndex = 47
+        Me.BtnPause.Text = "Pause"
+        Me.BtnPause.UseVisualStyleBackColor = True
+        '
         'FormJeu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(850, 1029)
+        Me.ClientSize = New System.Drawing.Size(850, 1050)
+        Me.Controls.Add(Me.BtnPause)
+        Me.Controls.Add(Me.BtnReprendre)
         Me.Controls.Add(Me.BtnAbandonner)
         Me.Controls.Add(Me.LblTpsRestantModif)
         Me.Controls.Add(Me.LblTpsRestant)
@@ -359,4 +381,6 @@ Partial Class FormJeu
     Friend WithEvents BtnAbandonner As Button
     Private WithEvents TimerVisionnerCarte As Timer
     Private WithEvents TimerTempsRestant As Timer
+    Friend WithEvents BtnReprendre As Button
+    Friend WithEvents BtnPause As Button
 End Class

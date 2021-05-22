@@ -35,9 +35,11 @@
 
     'Retient le score du joeur
     Private score As Integer = 0
-
-    'Retiens le temps mis pour trouver x cartes
+    'Retient le temps mis pour trouver x cartes
     Private temps As Integer = 90
+
+    'Retient si le jeu est en pause ou non
+    Private pause As Boolean = False
 
     '-----------------------------------------------------------------------------------------------
     'Load
@@ -55,6 +57,8 @@
 
         afficheNomJoueur()
         LblTpsRestantModif.Text = "01:30"
+
+        BtnReprendre.Visible = False
 
         Dim ListeCartes As List(Of PictureBox)
 
@@ -145,6 +149,11 @@
     Private Sub CarteCliquee(sender As Object, e As EventArgs) Handles LabelImg1.Click, LabelImg3.Click, LabelImg2.Click, LabelImg9.Click, LabelImg8.Click, LabelImg7.Click, LabelImg6.Click, LabelImg5.Click, LabelImg4.Click, LabelImg20.Click, LabelImg19.Click, LabelImg18.Click, LabelImg17.Click, LabelImg16.Click, LabelImg15.Click, LabelImg14.Click, LabelImg13.Click, LabelImg12.Click, LabelImg11.Click, LabelImg10.Click
         'Si le joueur visionne la carte, rien ne peut être cliqué
         If TimerVisionnerCarte.Enabled Then
+            Exit Sub
+        End If
+
+        'Si le jeu est en pause, rien ne peut être cliqué
+        If pause Then
             Exit Sub
         End If
 
@@ -271,6 +280,38 @@
     Private Sub TimerVisionnerCarte_Tick(sender As Object, e As EventArgs) Handles TimerVisionnerCarte.Tick
         TimerVisionnerCarte.Stop()
         retournerToutesLesCartes()
+    End Sub
+
+    '-----------------------------------------------------------------------------------------------
+    'Pause / Reprendre
+    '-----------------------------------------------------------------------------------------------
+
+    'Permet de mettre la partie en pause
+    Private Sub mettreEnPause(sender As Object, e As EventArgs) Handles BtnPause.Click
+        'Si la partie n'est pas commencée, rien n'est fait
+        If TimerTempsRestant.Enabled = False Then
+            Exit Sub
+        End If
+        'Cache le bouton "Pause"
+        BtnPause.Visible = False
+        'Rend le bouton "Reprendre" visible
+        BtnReprendre.Visible = True
+        'Met le boolean "pause" a True
+        Me.pause = True
+        'Arrête le timer
+        TimerTempsRestant.Stop()
+    End Sub
+
+    'Permet de reprendre la partie
+    Private Sub Reprendre(sender As Object, e As EventArgs) Handles BtnReprendre.Click
+        'Cache le bouton "Reprendre"
+        BtnReprendre.Visible = False
+        'Rend le bouton "Pause" visible
+        BtnPause.Visible = True
+        'Met le boolean "pause" a False
+        Me.pause = False
+        'Continue le timer
+        TimerTempsRestant.Start()
     End Sub
 
     '-----------------------------------------------------------------------------------------------
