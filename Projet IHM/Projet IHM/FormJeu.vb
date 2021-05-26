@@ -4,7 +4,9 @@
     'Attributs
     '-----------------------------------------------------------------------------------------------
 
-    Private TEMPS_PARTIE As Integer = 90
+    'Retient le temps de la partie
+    Private TEMPS_PARTIE As Integer = 2
+    Private tempsTexte As String
 
     'Pour générer aléatoirement le placement des cartes
     Private random As New Random
@@ -36,15 +38,23 @@
     'Retient le score du joeur
     Private score As Integer = 0
     'Retient le temps mis pour trouver x cartes
-    Private temps As Integer = 90
+    'On l'initialise à TEMPS_PARTIE pour que si le joueur ne trouve aucune carte, il soit déjà à TEMPS_PARTIE
+    Private temps As Integer = TEMPS_PARTIE
 
     'Retient si le jeu est en pause ou non
     Private pause As Boolean = False
+
+    'Retient le joueur
+    Private joueur As Joueur
 
     '-----------------------------------------------------------------------------------------------
     'Load
     '-----------------------------------------------------------------------------------------------
 
+    '@brief Permet d'enlever le ComboBox, de sélectionner le bon BorderStyle, de tailler la fenêtre,
+    'de retourner les cartes, d'afficher le nom du joueur, de convertir le temps en texte, de rendre
+    'invisible le BtnReprendre, de mélanger et d'attribuer les cartes
+    '@param[in] sender et e
     Private Sub FormJeu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Enlève le ControlBox
         Me.ControlBox = False
@@ -56,10 +66,13 @@
         retournerToutesLesCartes()
 
         afficheNomJoueur()
-        LblTpsRestantModif.Text = "01:30"
+
+        convertTempsToTempsTexte()
+        LblTpsRestantModif.Text = tempsTexte
 
         BtnReprendre.Visible = False
 
+        'EST CE QUE C'EST UTILE ????????
         Dim ListeCartes As List(Of PictureBox)
 
         melanger(liste)
@@ -71,7 +84,7 @@
     'Sub pour le load
     '-----------------------------------------------------------------------------------------------
 
-    'Permet de retourner les cartes des séries non-terminées
+    '@brief Permet de retourner les cartes des séries non-terminées
     Private Sub retournerToutesLesCartes()
         For Each carte As Label In PnlCarte.Controls
             'Si la carte fait partie d'une série terminée
@@ -96,17 +109,29 @@
         Next
     End Sub
 
-    'Affiche le nom du joueur
+    '@brief Affiche le nom du joueur à la place du LblJoueurModif.Text
     Private Sub afficheNomJoueur()
         LblJoueurModif.Text = FormMenu.ComboBoxNom.Text
     End Sub
 
-    'Mélange la liste, pour avoir les cartes mélangées
+    '@brief Convertit TEMPS_PARTIE en String pouvant être exploitable par le TimerTempsRestant
+    Private Sub convertTempsToTempsTexte()
+        Dim tempsTexteFunct As String = "0"
+        tempsTexteFunct &= CStr(Math.Floor(TEMPS_PARTIE / 60))
+        tempsTexteFunct &= ":"
+        If CStr(TEMPS_PARTIE Mod 60) < 10 Then
+            tempsTexteFunct &= "0" & CStr(TEMPS_PARTIE Mod 60)
+        Else
+            tempsTexteFunct &= CStr(TEMPS_PARTIE Mod 60)
+        End If
+        tempsTexte = tempsTexteFunct
+    End Sub
+
+    '@brief Mélange la liste, pour avoir les cartes mélangées
     Private Sub melanger(liste)
 
         Dim ind As Integer() = New Integer(liste.Length - 1) {}
         Dim index As Integer
-
 
         For i As Integer = 0 To liste.Length - 1
             ind(i) = 0
@@ -122,7 +147,7 @@
         Next
     End Sub
 
-    'Attribue chaque tag à un numéro du tableau tabMelange()
+    '@brief Attribue chaque tag à un numéro du tableau tabMelange()
     Private Sub attribuer()
         For i As Integer = 0 To PnlCarte.Controls.Count - 1
             PnlCarte.Controls(i).Tag = tabMelange(i)
@@ -132,6 +157,11 @@
     '-----------------------------------------------------------------------------------------------
     'Timer Temps Restant
     '-----------------------------------------------------------------------------------------------
+
+    '@brief Permet le fonctionnement du TimerTempsRestant
+    'Quand le timer est fini, il lance le Sub partieFinie()
+    '@param[in] sender et e
+    '@see partieFinie()
     Private Sub TimerTempsRestant_Tick(sender As Object, e As EventArgs) Handles TimerTempsRestant.Tick
         LblTpsRestantModif.Text =
             FormatDateTime(DateAdd(DateInterval.Second, -1, DateTime.Parse(LblTpsRestantModif.Text)), DateFormat.ShortTime)
@@ -146,6 +176,17 @@
     'A CHAQUE CARTE CLIQUEE
     '-----------------------------------------------------------------------------------------------
 
+    '@brief Permet de retourner les cartes et faire toutes les vérifications sur celles-ci
+    'Les 20 LabelImg sont Handles
+    '@param[in] sender et e
+    '@see carteUnique(ByVal name As String)
+    '@see carteCliqueSerieTerminee()
+    '@see serieTerminee()
+    '@see conversionTemps()
+    '@see retournerToutesLesCartes()
+    '@see partieFinie()
+    '@see premierChoix()
+    '@see cartesEgales()
     Private Sub CarteCliquee(sender As Object, e As EventArgs) Handles LabelImg1.Click, LabelImg3.Click, LabelImg2.Click, LabelImg9.Click, LabelImg8.Click, LabelImg7.Click, LabelImg6.Click, LabelImg5.Click, LabelImg4.Click, LabelImg20.Click, LabelImg19.Click, LabelImg18.Click, LabelImg17.Click, LabelImg16.Click, LabelImg15.Click, LabelImg14.Click, LabelImg13.Click, LabelImg12.Click, LabelImg11.Click, LabelImg10.Click
         'Si le joueur visionne la carte, rien ne peut être cliqué
         If TimerVisionnerCarte.Enabled Then
@@ -216,23 +257,24 @@
     'Sub et Function pour CarteCliquée 
     '-----------------------------------------------------------------------------------------------
 
-    'Vérifie si la carte est la première sélectionnée
-    'Retourne True si la carte est la première sélectionnée
-    'Retourne False si la carte n'est pas la pre    mière sélectionnée
+    '@brief Vérifie si la carte est la première sélectionnée
+    '@return True si la carte est la première sélectionnée
+    '@return False si la carte n'est pas la première sélectionnée
     Private Function premierChoix() As Boolean
         Return indexChoix = 0
     End Function
 
-    'Vérifie si la carte est égale à la dernière sélectionnée
-    'Retourne True si la carte est égale à la dernière sélectionnée
-    'Retourne False si la carte n'est pas égale à la dernière sélectionnée
+    '@brief Vérifie si la carte est égale à la dernière sélectionnée
+    '@return True si la carte est égale à la dernière sélectionnée
+    '@return False si la carte n'est pas égale à la dernière sélectionnée
     Private Function cartesEgales() As Boolean
         Return tagCartesChoisies(indexChoix) = tagCartesChoisies(indexChoix - 1)
     End Function
 
-    'Vérifie si la carte n'a pas déjà été selectionnée
-    'Retourne True si la carte n'a pas déjà été selectionnée
-    'Retourne False si la carte a déjà été selectionnée
+    '@brief Vérifie si la carte n'a pas déjà été selectionnée
+    '@param[in] name le nom de la carte
+    '@return True si la carte n'a pas déjà été selectionnée
+    '@return False si la carte a déjà été selectionnée
     Private Function carteUnique(ByVal name As String) As Boolean
         For i As Integer = 0 To nomsCartesChoisies.Length - 1
             'Vérifie que le nom (qui est unique) fait partie du tableau nomsCartesChoisies()
@@ -244,7 +286,8 @@
         Return True
     End Function
 
-    'Convertit le temps restant en secondes écoulées
+    '@brief Convertit le temps restant en secondes écoulées
+    '@return le nombre de secondes déjà écoulées
     Private Function conversionTemps() As Integer
         Dim secondesEcoulees As Integer = 0
         secondesEcoulees = Integer.Parse(LblTpsRestantModif.Text.Chars(4)) 'Secondes
@@ -254,9 +297,9 @@
         Return TEMPS_PARTIE - secondesEcoulees
     End Function
 
-    'Vérifie si la série est terminée
-    'Retourne True si la série est terminée
-    'Retourne False si la série n'est pas terminée
+    '@brief Vérifie si la série est terminée
+    '@return True si la série est terminée
+    '@return False si la série n'est pas terminée
     Private Function serieTerminee() As Boolean
         For i As Integer = 0 To tagCartesChoisies.Length - 1
             'Compare la carte de tagCartesChoisies(0) à toutes les cartes
@@ -269,14 +312,14 @@
         Return True
     End Function
 
-    'Vérifie si la carte cliquée fait partie d'une série terminée
-    'Retourne True si la carte cliquée fait partie d'une série terminée
-    'Retourne False si la carte cliquée ne fait pas partie d'une série terminée
+    '@brief Vérifie si la carte cliquée fait partie d'une série terminée
+    '@return True si la carte cliquée fait partie d'une série terminée
+    '@return False si la carte cliquée ne fait pas partie d'une série terminée
     Private Function carteCliqueSerieTerminee() As Boolean
         Return seriesTerminees.Contains(tagCartesChoisies(indexChoix))
     End Function
 
-    'Timer pour suspendre l'interaction utilisateur pendant que le programme montre la fausse carte
+    '@brief Permet de suspendre l'interaction utilisateur pendant que le programme montre la mauvaise carte
     Private Sub TimerVisionnerCarte_Tick(sender As Object, e As EventArgs) Handles TimerVisionnerCarte.Tick
         TimerVisionnerCarte.Stop()
         retournerToutesLesCartes()
@@ -286,7 +329,8 @@
     'Pause / Reprendre
     '-----------------------------------------------------------------------------------------------
 
-    'Permet de mettre la partie en pause
+    '@brief Permet de mettre la partie en pause
+    '@param[in] sender et e
     Private Sub mettreEnPause(sender As Object, e As EventArgs) Handles BtnPause.Click
         'Si la partie n'est pas commencée, rien n'est fait
         If TimerTempsRestant.Enabled = False Then
@@ -302,7 +346,8 @@
         TimerTempsRestant.Stop()
     End Sub
 
-    'Permet de reprendre la partie
+    '@brief Permet de reprendre la partie
+    '@param[in] sender et e
     Private Sub Reprendre(sender As Object, e As EventArgs) Handles BtnReprendre.Click
         'Cache le bouton "Reprendre"
         BtnReprendre.Visible = False
@@ -318,9 +363,18 @@
     'Partie Finie
     '-----------------------------------------------------------------------------------------------
 
+    '@brief Permet de traiter la fin de partie
     Private Sub partieFinie()
+        'Enregistre les statistiques du joueur dans la structure
+        joueur.cartes = score
+        joueur.nom = LblJoueurModif.Text
+        joueur.temps = temps
+        sauvegardeJoueur(joueur)
+
+        'Stoppe le timer
         TimerTempsRestant.Enabled = False
-        If temps = 90 Then
+        'Si le joueur n'a trouvé aucun carré
+        If temps = TEMPS_PARTIE Then
             If MsgBox(LblJoueurModif.Text & ", vous n'avez trouvé aucun carré. Votre score est donc de " & score &
                       ", et votre temps est de " & temps & " secondes.", vbOKOnly, "Partie perdue") = vbOK Then
                 Me.Close()
@@ -333,12 +387,14 @@
                 FormMenu.Show()
             End If
         End If
-
     End Sub
 
     '-----------------------------------------------------------------------------------------------
     'Bouton Abandonner
     '-----------------------------------------------------------------------------------------------
+
+    '@brief Permet d'abandonner la partie sur le clique de BtnAbandonner
+    '@param[in] sender et e
     Private Sub BtnAbandonner_Click(sender As Object, e As EventArgs) Handles BtnAbandonner.Click
         If MsgBox("Voulez-vous abandonner ?",
                   vbCritical + vbYesNo + vbDefaultButton2, "Abandonner") = vbYes Then

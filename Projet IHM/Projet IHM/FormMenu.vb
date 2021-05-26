@@ -4,6 +4,9 @@
     'Load
     '-----------------------------------------------------------------------------------------------
 
+    '@brief Permet d'enlever le ComboBox, de sélectionner le bon BorderStyle, de tailler la fenêtre,
+    'et de griser le BtnJouer
+    '@param[in] sender et e
     Private Sub FormMenu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Enlève le ControlBox
         Me.ControlBox = False
@@ -19,7 +22,8 @@
     'ComboBox Nom
     '-----------------------------------------------------------------------------------------------
 
-    'Vérifie que le nom rentré comporte des lettres ou des tirets
+    '@brief Vérifie que le nom rentré comporte des lettres ou des tirets à chaque KeyPress
+    '@param[in] sender et e
     Private Sub ComboBoxName_KeyPress(sender As Object, e As KeyPressEventArgs) Handles ComboBoxNom.KeyPress
 
         If e.KeyChar = vbBack Or e.KeyChar = "-" Then
@@ -31,7 +35,8 @@
         End If
     End Sub
 
-    'Vérifie que la longueur du nom est bel et bien comrpise entre 3 et 14
+    '@brief Vérifie que la longueur du nom est bel et bien comrpise entre 3 et 14 a chaque TextChanged
+    '@param[in] sender et e
     Private Sub ComboBoxName_TextChanged(sender As Object, e As EventArgs) Handles ComboBoxNom.TextChanged
         BtnJouer.Enabled = False
 
@@ -40,7 +45,8 @@
         End If
     End Sub
 
-    'Met le nom en ProperCase
+    '@brief Met le nom en ProperCase a chaque LostFocus
+    '@param[in] sender et e
     Private Sub ComboBoxNom_LostFocus(sender As Object, e As EventArgs) Handles ComboBoxNom.LostFocus
         sender.Text = StrConv(sender.Text, vbProperCase)
     End Sub
@@ -49,7 +55,8 @@
     'Bouton Jouer
     '-----------------------------------------------------------------------------------------------
 
-    'Permet le lancement du jeu
+    '@brief Permet le lancement du jeu sur le clique de BtnJouer
+    '@param[in] sender et e
     Private Sub BtnJouer_Click(sender As Object, e As EventArgs) Handles BtnJouer.Click
         FormJeu.Show()
         Me.Hide()
@@ -59,7 +66,8 @@
     'Bouton Quitter
     '-----------------------------------------------------------------------------------------------
 
-    'Permet de quitter l'application
+    '@brief Permet de quitter l'application sur le clique de BtnQuitter
+    '@param[in] sender et e
     Private Sub BtnQuitter_Click(sender As Object, e As EventArgs) Handles BtnQuitter.Click
         If MsgBox("Voulez-vous quitter l'application ?",
                   vbCritical + vbYesNo + vbDefaultButton2, "Vous allez quitter l'application") = vbYes Then
@@ -67,7 +75,8 @@
         End If
     End Sub
 
-    'Permet d'afficher le formulaire des scores
+    '@brief Permet d'afficher le formulaire des scores
+    '@param[in] sender et e
     Private Sub BtnScores_Click(sender As Object, e As EventArgs) Handles BtnScores.Click
         Me.Hide()
         FormSauvegardeNom.Show()
