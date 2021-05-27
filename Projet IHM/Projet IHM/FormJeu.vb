@@ -4,20 +4,24 @@
     'Attributs
     '-----------------------------------------------------------------------------------------------
 
+    'Retient le joueur
+    Private joueur As Joueur
+
     'Retient le temps de la partie
-    Private TEMPS_PARTIE As Integer = 2
+    Private TEMPS_PARTIE As Integer = 60
     Private tempsTexte As String
 
-    'Pour générer aléatoirement le placement des cartes
-    Private random As New Random
+    'Retient le score du joueur, c'est à dire son nombre de cartes
+    Private cartes As Integer = 0
+    'Retient le temps mis pour trouver x cartes
+    'On l'initialise à TEMPS_PARTIE pour que si le joueur ne trouve aucune carte, le temps soit déjà à TEMPS_PARTIE
+    '(le maximum)
+    Private temps As Integer = TEMPS_PARTIE
 
     'Tableau servant à associer un numéro à une carte
     Private liste() As Integer = {0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4}
     'Tableau précédent, mais mélangé dans la fonction mélanger
     Private tabMelange As Integer() = New Integer(liste.Length - 1) {}
-
-    'Vérifie si c'est la première carte qui a été tirée de tout le jeu
-    Private PremiereCarte As Boolean = True
 
     'Tableau mémorisant le tag des cartes sélectionnées simultanéments
     'Initialisé à -1, car aucune carte n'est sélectionnée
@@ -35,17 +39,10 @@
     'Retient le nombre de série(s) terminée(s), et donc l'index du tableau précédent
     Private nbSeriesTerminees As Integer = 0
 
-    'Retient le score du joeur
-    Private score As Integer = 0
-    'Retient le temps mis pour trouver x cartes
-    'On l'initialise à TEMPS_PARTIE pour que si le joueur ne trouve aucune carte, il soit déjà à TEMPS_PARTIE
-    Private temps As Integer = TEMPS_PARTIE
-
+    'Vérifie si c'est la première carte qui a été tirée de tout le jeu
+    Private PremiereCarte As Boolean = True
     'Retient si le jeu est en pause ou non
     Private pause As Boolean = False
-
-    'Retient le joueur
-    Private joueur As Joueur
 
     '-----------------------------------------------------------------------------------------------
     'Load
@@ -71,9 +68,6 @@
         LblTpsRestantModif.Text = tempsTexte
 
         BtnReprendre.Visible = False
-
-        'EST CE QUE C'EST UTILE ????????
-        Dim ListeCartes As List(Of PictureBox)
 
         melanger(liste)
         attribuer()
@@ -115,6 +109,8 @@
     End Sub
 
     '@brief Convertit TEMPS_PARTIE en String pouvant être exploitable par le TimerTempsRestant
+    'Le TimerTempsRestant utilise se String comme "Point de départ" du timer
+    '@see TimerTempsRestant_Tick()
     Private Sub convertTempsToTempsTexte()
         Dim tempsTexteFunct As String = "0"
         tempsTexteFunct &= CStr(Math.Floor(TEMPS_PARTIE / 60))
@@ -129,6 +125,9 @@
 
     '@brief Mélange la liste, pour avoir les cartes mélangées
     Private Sub melanger(liste)
+
+        'Pour générer aléatoirement le placement des cartes
+        Dim random As New Random
 
         Dim ind As Integer() = New Integer(liste.Length - 1) {}
         Dim index As Integer
@@ -227,7 +226,7 @@
         sender.image = ImageList.Images(sender.tag)
 
         If serieTerminee() Then
-            score += 1
+            cartes += 1
             temps = conversionTemps()
             seriesTerminees(nbSeriesTerminees) = sender.tag
             nbSeriesTerminees = nbSeriesTerminees + 1
@@ -365,23 +364,24 @@
 
     '@brief Permet de traiter la fin de partie
     Private Sub partieFinie()
-        'Enregistre les statistiques du joueur dans la structure
-        joueur.cartes = score
-        joueur.nom = LblJoueurModif.Text
-        joueur.temps = temps
-        sauvegardeJoueur(joueur)
-
         'Stoppe le timer
         TimerTempsRestant.Enabled = False
+
+        'Enregistre les statistiques du joueur dans la structure
+        joueur.cartes = cartes
+        joueur.nom = LblJoueurModif.Text
+        joueur.temps = temps
+        traitementSauvegarde(joueur)
+
         'Si le joueur n'a trouvé aucun carré
         If temps = TEMPS_PARTIE Then
-            If MsgBox(LblJoueurModif.Text & ", vous n'avez trouvé aucun carré. Votre score est donc de " & score &
+            If MsgBox(LblJoueurModif.Text & ", vous n'avez trouvé aucun carré. Votre score est donc de " & cartes &
                       ", et votre temps est de " & temps & " secondes.", vbOKOnly, "Partie perdue") = vbOK Then
                 Me.Close()
                 FormMenu.Show()
             End If
         Else
-            If MsgBox(LblJoueurModif.Text & ", la partie est finie. Votre score est de " & score &
+            If MsgBox(LblJoueurModif.Text & ", la partie est finie. Votre score est de " & cartes &
                       ", et votre temps est de " & temps & " secondes.", vbOKOnly, "Partie terminée") = vbOK Then
                 Me.Close()
                 FormMenu.Show()

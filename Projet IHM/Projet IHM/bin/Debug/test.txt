@@ -1,3 +1,2 @@
-﻿Dsf;0;2;
-Ddd;0;2;
-Sss;0;2;
+Youcef;2;31
+Daryl;5;44
