@@ -15,6 +15,7 @@
         'Adapte la taille de la fenêtre automatiquement
         Me.AutoSize = True
         BtnJouer.Enabled = False
+
         actrualisercombobox()
 
 
