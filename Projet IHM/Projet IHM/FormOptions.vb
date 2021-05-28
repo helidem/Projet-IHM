@@ -11,6 +11,18 @@
     End Sub
 
     '-----------------------------------------------------------------------------------------------
+    'Mode détente
+    '-----------------------------------------------------------------------------------------------
+
+    Private Sub dedente_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBoxDetente.CheckedChanged
+        If CheckBoxDetente.Checked Then
+            TextBoxTimer.Enabled = False
+        Else
+            TextBoxTimer.Enabled = True
+        End If
+    End Sub
+
+    '-----------------------------------------------------------------------------------------------
     'Valider et mettre les options
     '-----------------------------------------------------------------------------------------------
 
@@ -29,18 +41,24 @@
     '@see traitementsOptions.setTime(timeV As Integer)
     '@see traitementsOptions.setTheme(themeV As Integer)
     Private Sub putOptions()
-        traitementsOptions.setTime(TextBoxTimer.Text)
+        traitementsOptions.setDetente(CheckBoxDetente.Checked)
 
         If RadioButtonClassique.Checked Then
             traitementsOptions.setTheme(0)
         ElseIf RadioButtonPSG.Checked Then
-            traitementsOptions.setTheme(0)
+            traitementsOptions.setTheme(1)
         ElseIf RadioButtonRMA.Checked Then
             traitementsOptions.setTheme(2)
         End If
 
-        MsgBox("Les paramètres ont été changés. Le temps est de " & traitementsOptions.getTime _
-               & " secondes, et le thème est le n°" & traitementsOptions.getTheme + 1 & ".")
+        If CheckBoxDetente.Checked Then
+            MsgBox("Les paramètres ont été changés. Le mode détente est activé, et le thème est le n°" & traitementsOptions.getTheme + 1 & ".")
+        Else
+            traitementsOptions.setTime(TextBoxTimer.Text)
+            MsgBox("Les paramètres ont été changés. Le temps est de " & traitementsOptions.getTime _
+                   & " secondes, et le thème est le n°" & traitementsOptions.getTheme + 1 & ".")
+        End If
+
         Me.Close()
         FormMenu.Show()
     End Sub
@@ -53,10 +71,13 @@
     '@return True si le temps est correctement entré
     '@return False si le temps n'est pas correctement entré
     Private Function ckTemps() As Boolean
-        If TextBoxTimer.Text = "" OrElse TextBoxTimer.Text = 0 OrElse TextBoxTimer.Text > 599 Then
-            MsgBox("Vous devez entrer comme temps une valeur comprise entre 1 et 599.", vbOKOnly)
-            LblTimer.ForeColor = Color.Red
-            Return False
+        If Not CheckBoxDetente.Checked Then
+            If (TextBoxTimer.Text = "") OrElse TextBoxTimer.Text = 0 _
+                OrElse TextBoxTimer.Text > 599 Then
+                MsgBox("Vous devez entrer comme temps une valeur comprise entre 1 et 599.", vbOKOnly)
+                LblTimer.ForeColor = Color.Red
+                Return False
+            End If
         End If
         Return True
     End Function
@@ -82,8 +103,8 @@
     '@see le module traitementOptions.vb
     Private Sub retablirDefault(sender As Object, e As EventArgs) Handles BtnDefault.Click
         traitementsOptions.initOption()
-        MsgBox("Les paramètres ont été rétablis par défault. Le temps est de " & traitementsOptions.getTime _
-               & " secondes, et le thème est le n°" & traitementsOptions.getTheme + 1 & ".")
+        MsgBox("Les paramètres ont été rétablis par défault. Le mode détente est désactivé, le temps est de " _
+               & traitementsOptions.getTime & " secondes, et le thème est le n°" & traitementsOptions.getTheme + 1 & ".")
         Me.Close()
         FormMenu.Show()
     End Sub

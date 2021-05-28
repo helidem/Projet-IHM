@@ -33,13 +33,15 @@ Partial Class FormOptions
         Me.BtnMenu = New System.Windows.Forms.Button()
         Me.BtnDefault = New System.Windows.Forms.Button()
         Me.LblTitreOptions = New System.Windows.Forms.Label()
+        Me.LblDetente = New System.Windows.Forms.Label()
+        Me.CheckBoxDetente = New System.Windows.Forms.CheckBox()
         Me.PnlTheme.SuspendLayout()
         Me.SuspendLayout()
         '
         'LblTheme
         '
         Me.LblTheme.AutoSize = True
-        Me.LblTheme.Location = New System.Drawing.Point(41, 245)
+        Me.LblTheme.Location = New System.Drawing.Point(41, 294)
         Me.LblTheme.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LblTheme.Name = "LblTheme"
         Me.LblTheme.Size = New System.Drawing.Size(66, 20)
@@ -87,7 +89,7 @@ Partial Class FormOptions
         Me.PnlTheme.Controls.Add(Me.RadioButtonRMA)
         Me.PnlTheme.Controls.Add(Me.RadioButtonPSG)
         Me.PnlTheme.Controls.Add(Me.RadioButtonClassique)
-        Me.PnlTheme.Location = New System.Drawing.Point(161, 205)
+        Me.PnlTheme.Location = New System.Drawing.Point(161, 254)
         Me.PnlTheme.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.PnlTheme.Name = "PnlTheme"
         Me.PnlTheme.Size = New System.Drawing.Size(618, 115)
@@ -96,7 +98,7 @@ Partial Class FormOptions
         'LblTimer
         '
         Me.LblTimer.AutoSize = True
-        Me.LblTimer.Location = New System.Drawing.Point(254, 128)
+        Me.LblTimer.Location = New System.Drawing.Point(161, 177)
         Me.LblTimer.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LblTimer.Name = "LblTimer"
         Me.LblTimer.Size = New System.Drawing.Size(195, 20)
@@ -105,7 +107,7 @@ Partial Class FormOptions
         '
         'TextBoxTimer
         '
-        Me.TextBoxTimer.Location = New System.Drawing.Point(467, 125)
+        Me.TextBoxTimer.Location = New System.Drawing.Point(494, 174)
         Me.TextBoxTimer.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TextBoxTimer.Name = "TextBoxTimer"
         Me.TextBoxTimer.Size = New System.Drawing.Size(100, 26)
@@ -113,7 +115,7 @@ Partial Class FormOptions
         '
         'BtnValider
         '
-        Me.BtnValider.Location = New System.Drawing.Point(370, 350)
+        Me.BtnValider.Location = New System.Drawing.Point(370, 399)
         Me.BtnValider.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.BtnValider.Name = "BtnValider"
         Me.BtnValider.Size = New System.Drawing.Size(135, 49)
@@ -123,7 +125,7 @@ Partial Class FormOptions
         '
         'BtnMenu
         '
-        Me.BtnMenu.Location = New System.Drawing.Point(221, 444)
+        Me.BtnMenu.Location = New System.Drawing.Point(221, 493)
         Me.BtnMenu.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.BtnMenu.Name = "BtnMenu"
         Me.BtnMenu.Size = New System.Drawing.Size(135, 49)
@@ -133,7 +135,7 @@ Partial Class FormOptions
         '
         'BtnDefault
         '
-        Me.BtnDefault.Location = New System.Drawing.Point(518, 444)
+        Me.BtnDefault.Location = New System.Drawing.Point(518, 493)
         Me.BtnDefault.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.BtnDefault.Name = "BtnDefault"
         Me.BtnDefault.Size = New System.Drawing.Size(135, 49)
@@ -151,11 +153,31 @@ Partial Class FormOptions
         Me.LblTitreOptions.TabIndex = 8
         Me.LblTitreOptions.Text = "Options"
         '
+        'LblDetente
+        '
+        Me.LblDetente.AutoSize = True
+        Me.LblDetente.Location = New System.Drawing.Point(99, 118)
+        Me.LblDetente.Name = "LblDetente"
+        Me.LblDetente.Size = New System.Drawing.Size(324, 20)
+        Me.LblDetente.TabIndex = 9
+        Me.LblDetente.Text = "Mode détente : Pas de score, pas de temps :"
+        '
+        'CheckBoxDetente
+        '
+        Me.CheckBoxDetente.AutoSize = True
+        Me.CheckBoxDetente.Location = New System.Drawing.Point(535, 119)
+        Me.CheckBoxDetente.Name = "CheckBoxDetente"
+        Me.CheckBoxDetente.Size = New System.Drawing.Size(22, 21)
+        Me.CheckBoxDetente.TabIndex = 10
+        Me.CheckBoxDetente.UseVisualStyleBackColor = True
+        '
         'FormOptions
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(824, 528)
+        Me.ClientSize = New System.Drawing.Size(824, 566)
+        Me.Controls.Add(Me.CheckBoxDetente)
+        Me.Controls.Add(Me.LblDetente)
         Me.Controls.Add(Me.LblTitreOptions)
         Me.Controls.Add(Me.BtnDefault)
         Me.Controls.Add(Me.BtnMenu)
@@ -184,4 +206,6 @@ Partial Class FormOptions
     Friend WithEvents BtnMenu As Button
     Friend WithEvents BtnDefault As Button
     Friend WithEvents LblTitreOptions As Label
+    Friend WithEvents LblDetente As Label
+    Friend WithEvents CheckBoxDetente As CheckBox
 End Class

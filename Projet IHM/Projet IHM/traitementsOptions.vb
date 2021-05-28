@@ -1,13 +1,16 @@
 ﻿Module traitementsOptions
+    'Enregistre le temps de la partie
     Private time As Integer
+    'Enregistre le thème de la partie
     Private theme As Integer
+    'Enregistre s'il y a ou non le mode détente
+    Private detente As Boolean
 
     '@brief Permet d'initialiser les options aux valeurs de base
     Public Sub initOption()
-        'Enregistre le temps de la partie
         time = 90
-        'Enregistre le thème de la partie
         theme = 0
+        detente = False
     End Sub
 
     '-----------------------------------------------------------------------------------------------
@@ -36,5 +39,17 @@
     '@param[in] thèmeV la variable contenant le nouvel attribut thème
     Public Sub setTheme(themeV As Integer)
         theme = themeV
+    End Sub
+
+    '@brief Retourne le boolean detente
+    '@return detente le boolean detente
+    Public Function getDetente() As Integer
+        Return detente
+    End Function
+
+    '@brief Change le boolean detente
+    '@param[in] detente le boolean contenant le nouveau boolean detente
+    Public Sub setDetente(detenteV As Boolean)
+        detente = detenteV
     End Sub
 End Module

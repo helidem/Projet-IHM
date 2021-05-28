@@ -66,6 +66,7 @@
     'invisible le BtnReprendre, de mélanger et d'attribuer les cartes
     '@param[in] sender et e
     '@see afficheNomJoueur()
+    '@see traitementsOptions.getDetente
     '@see traitementOptions.getTime() du module traitementOptions.vb
     '@see convertTempsToTempsTexte()
     '@see melanger()
@@ -85,12 +86,17 @@
         'Affiche le nom du joueur à la place du LblJoueurModif.Text
         afficheNomJoueur()
 
-        'Attribue le temps de la partie grâce à traitementOption.getTime()
-        TEMPS_PARTIE = traitementsOptions.getTime()
-        temps = TEMPS_PARTIE
-        convertTempsToTempsTexte()
-        LblTpsRestantModif.Text = tempsTexte
-
+        'Si le mode détente est activé, on enlève les Labels
+        If Not traitementsOptions.getDetente Then
+            'Attribue le temps de la partie grâce à traitementOption.getTime()
+            TEMPS_PARTIE = traitementsOptions.getTime()
+            temps = TEMPS_PARTIE
+            convertTempsToTempsTexte()
+            LblTpsRestantModif.Text = tempsTexte
+        Else
+            LblTpsRestant.Visible = False
+            LblTpsRestantModif.Visible = False
+        End If
         BtnReprendre.Visible = False
 
         melanger(liste)
@@ -193,7 +199,13 @@
     'Quand le timer est fini, il lance le Sub partieFinie()
     '@param[in] sender et e
     '@see partieFinie()
+    '@see traitementsOptions.getDetente
     Private Sub TimerTempsRestant_Tick(sender As Object, e As EventArgs) Handles TimerTempsRestant.Tick
+        'Si le mode détente est activé, on ne fait rien
+        If traitementsOptions.getDetente Then
+            Exit Sub
+        End If
+
         LblTpsRestantModif.Text =
             FormatDateTime(DateAdd(DateInterval.Second, -1, DateTime.Parse(LblTpsRestantModif.Text)), DateFormat.ShortTime)
 
@@ -324,7 +336,13 @@
 
     '@brief Convertit le temps restant en secondes écoulées
     '@return le nombre de secondes déjà écoulées
+    '@see traitementsOptions.getDetente
     Private Function conversionTemps() As Integer
+        'Si le mode détente est activé, on ne fait rien
+        If traitementsOptions.getDetente Then
+            Exit Function
+        End If
+
         Dim secondesEcoulees As Integer = 0
         secondesEcoulees = Integer.Parse(LblTpsRestantModif.Text.Chars(4)) 'Secondes
         secondesEcoulees += Integer.Parse(LblTpsRestantModif.Text.Chars(3)) * 10 'Dizaines de secondes
@@ -403,31 +421,42 @@
     '@brief Permet de traiter la fin de partie
     '@see traitementsJoueurs.traitementSauvegarde(joueur)
     Private Sub partieFinie()
-        'Stoppe le timer
-        TimerTempsRestant.Enabled = False
+        If Not traitementsOptions.getDetente Then
+            'SI LE MODE DETENTE EST DESACTIVE
 
-        'Enregistre les statistiques du joueur dans la structure
-        joueur.serie = serie
-        joueur.nom = LblJoueurModif.Text
-        joueur.temps = temps
+            'Stoppe le timer
+            TimerTempsRestant.Enabled = False
 
-        'Sauvegarde les informations du joueur
-        traitementsJoueurs.traitementSauvegarde(joueur)
+            'Enregistre les statistiques du joueur dans la structure
+            joueur.serie = serie
+            joueur.nom = LblJoueurModif.Text
+            joueur.temps = temps
 
-        'Si le joueur n'a trouvé aucun carré
-        If temps = TEMPS_PARTIE Then
-            If MsgBox(LblJoueurModif.Text & ", vous n'avez trouvé aucun carré. Votre score est donc de " & serie &
-                      ", et votre temps est de " & temps & " secondes.", vbOKOnly, "Partie perdue") = vbOK Then
-                Me.Close()
-                FormMenu.Show()
+            'Sauvegarde les informations du joueur
+            traitementsJoueurs.traitementSauvegarde(joueur)
+
+            'Si le joueur n'a trouvé aucun carré
+            If temps = TEMPS_PARTIE Then
+                If MsgBox(LblJoueurModif.Text & ", vous n'avez trouvé aucun carré. Votre score est donc de " & serie &
+                          ", et votre temps est de " & temps & " secondes.", vbOKOnly, "Partie perdue") = vbOK Then
+                    Me.Close()
+                    FormMenu.Show()
+                End If
+            Else
+                If MsgBox(LblJoueurModif.Text & ", la partie est finie. Votre score est de " & serie &
+                          ", et votre temps est de " & temps & " secondes.", vbOKOnly, "Partie terminée") = vbOK Then
+                    Me.Close()
+                    FormMenu.Show()
+                End If
             End If
         Else
-            If MsgBox(LblJoueurModif.Text & ", la partie est finie. Votre score est de " & serie &
-                      ", et votre temps est de " & temps & " secondes.", vbOKOnly, "Partie terminée") = vbOK Then
+            'SI LE MODE DETENTE EST ACTIVE
+            If MsgBox("BRAVO. Vous êtes détendu !") = vbOK Then
                 Me.Close()
                 FormMenu.Show()
             End If
         End If
+
 
     End Sub
 
