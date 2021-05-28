@@ -8,15 +8,16 @@
     Private joueur As Joueur
 
     'Retient le temps de la partie
-    Private TEMPS_PARTIE As Integer = 2
+    Private TEMPS_PARTIE As Integer
     Private tempsTexte As String
+    Public themeList() As ImageList
 
     'Retient le score du joueur, c'est à dire son nombre de cartes
     Private cartes As Integer = 0
     'Retient le temps mis pour trouver x cartes
     'On l'initialise à TEMPS_PARTIE pour que si le joueur ne trouve aucune carte, le temps soit déjà à TEMPS_PARTIE
     '(le maximum)
-    Private temps As Integer = TEMPS_PARTIE
+    Private temps As Integer
 
     'Tableau servant à associer un numéro à une carte
     Private liste() As Integer = {0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4}
@@ -45,6 +46,22 @@
     Private pause As Boolean = False
 
     '-----------------------------------------------------------------------------------------------
+    'Getters and Setters
+    '-----------------------------------------------------------------------------------------------
+
+    '@brief Retourne le temps de la partie
+    '@return TEMPS_PARTIE le temps de la partie
+    Public Function getTemps() As Integer
+        Return TEMPS_PARTIE
+    End Function
+
+    '@brief Met le temps de la partie
+    '@param[in] temps le nouveau temps de la partie
+    Public Sub setTemps(temps As Integer)
+        TEMPS_PARTIE = temps
+    End Sub
+
+    '-----------------------------------------------------------------------------------------------
     'Load
     '-----------------------------------------------------------------------------------------------
 
@@ -53,17 +70,21 @@
     'invisible le BtnReprendre, de mélanger et d'attribuer les cartes
     '@param[in] sender et e
     Private Sub FormJeu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        themeList = {ImageListDefaut, ImageListPSG}
+
         'Enlève le ControlBox
         Me.ControlBox = False
         'Permet de pouvoir déplacer la fenêtre, mais de ne pas pouvoir la redimensionner
         Me.FormBorderStyle = FormBorderStyle.FixedSingle
         'Adapte la taille de la fenêtre automatiquement
         Me.AutoSize = True
-
         retournerToutesLesCartes()
 
+        'Affiche le nom du joueur à la place du LblJoueurModif.Text
         afficheNomJoueur()
-
+        TEMPS_PARTIE = getTime()
+        temps = TEMPS_PARTIE
         convertTempsToTempsTexte()
         LblTpsRestantModif.Text = tempsTexte
 
@@ -71,7 +92,6 @@
 
         melanger(liste)
         attribuer()
-
     End Sub
 
     '-----------------------------------------------------------------------------------------------
@@ -84,13 +104,14 @@
             'Si la carte fait partie d'une série terminée
             If seriesTerminees.Contains(carte.Tag) Then
                 'On met l'image en noir et blanc
-                carte.Image = ImageList.Images(carte.Tag + 6)
+                carte.Image = themeList(1).Images(carte.Tag + 6)
+
                 'On passe au suivant
                 Continue For
             End If
 
             'On retourne la carte, en mettant la bonne image
-            carte.Image = ImageList.Images(5)
+            carte.Image = ImageListDefaut.Images(5)
         Next carte
 
         'On met l'index choix à 0, car aucune carte n'est sélectionnée dorénavant
@@ -113,8 +134,10 @@
     '@see TimerTempsRestant_Tick()
     Private Sub convertTempsToTempsTexte()
         Dim tempsTexteFunct As String = "0"
+        'On ajoute le nombre de minutes au String tempsTexteFunct
         tempsTexteFunct &= CStr(Math.Floor(TEMPS_PARTIE / 60))
         tempsTexteFunct &= ":"
+        'On ajoute le nombre de secondes au String tempsTexteFunct
         If CStr(TEMPS_PARTIE Mod 60) < 10 Then
             tempsTexteFunct &= "0" & CStr(TEMPS_PARTIE Mod 60)
         Else
@@ -223,14 +246,18 @@
         End If
 
         'Permet d'afficher la carte
-        sender.image = ImageList.Images(sender.tag)
+        sender.image = themeList(1).Images(sender.tag)
 
         If serieTerminee() Then
+            'Le score du joueur est incrémenté
             cartes += 1
+            'Le temps du joueur est mis à jour
             temps = conversionTemps()
+            'On rentre cette série comme terminée dans le tableau
             seriesTerminees(nbSeriesTerminees) = sender.tag
             nbSeriesTerminees = nbSeriesTerminees + 1
             retournerToutesLesCartes()
+            'Si toutes les séries sont trouvées (et donc le tableau ne contient plus -1)
             If Not seriesTerminees.Contains(-1) Then
                 partieFinie()
             End If
@@ -372,6 +399,7 @@
         joueur.nom = LblJoueurModif.Text
         joueur.temps = temps
 
+        'Sauvegarde les informations du joueur
         traitementSauvegarde(joueur)
 
         'Si le joueur n'a trouvé aucun carré
@@ -404,10 +432,4 @@
             FormMenu.Show()
         End If
     End Sub
-
-
-    Public Function getTemps() As Integer
-        Return TEMPS_PARTIE
-    End Function
-
 End Class

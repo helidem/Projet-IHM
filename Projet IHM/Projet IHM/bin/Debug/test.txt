@@ -1,7 +1,7 @@
 Youcef;0;2;8;4
 Daryl;0;2;8;4
 Flo;0;2;6;3
-Floc;0;2;2;1
+Floc;0;2;6;3
 Zgeg;0;2;2;1
 Bitte;0;2;2;1
 Gggg;0;2;2;1
@@ -18,3 +18,4 @@ Kkk;0;2;2;1
 Erhjbzefhjgeh;0;2;2;1
 Ssss;0;2;2;1
 Opdffpgjidgj;0;2;2;1
+Ppp;0;2;4;2

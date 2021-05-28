@@ -14,11 +14,10 @@
         Me.FormBorderStyle = FormBorderStyle.FixedSingle
         'Adapte la taille de la fenêtre automatiquement
         Me.AutoSize = True
+
         BtnJouer.Enabled = False
 
-        actrualisercombobox()
-
-
+        actualiserComboBoxNom()
     End Sub
 
     '-----------------------------------------------------------------------------------------------
@@ -28,7 +27,6 @@
     '@brief Vérifie que le nom rentré comporte des lettres ou des tirets à chaque KeyPress
     '@param[in] sender et e
     Private Sub ComboBoxName_KeyPress(sender As Object, e As KeyPressEventArgs) Handles ComboBoxNom.KeyPress
-
         If e.KeyChar = vbBack Or e.KeyChar = "-" Then
             Exit Sub
         End If
@@ -61,7 +59,6 @@
     '@brief Permet le lancement du jeu sur le clique de BtnJouer
     '@param[in] sender et e
     Private Sub BtnJouer_Click(sender As Object, e As EventArgs) Handles BtnJouer.Click
-
         FormJeu.Show()
         Me.Hide()
     End Sub
@@ -86,13 +83,19 @@
         FormScores.Show()
     End Sub
 
-
-    Public Sub actrualisercombobox()
+    '@brief Permet d'actualiser le ComboBoxNom avec le nom des joueurs
+    Public Sub actualiserComboBoxNom()
         ComboBoxNom.Items.Clear()
-        For Each item As Joueur In tabJoueur
+        For Each item As Joueur In tabJoueurs
             If Not item.nom = vbNullString Then
                 ComboBoxNom.Items.Add(item.nom)
             End If
         Next
+    End Sub
+
+    Private Sub BtnOptions_Click(sender As Object, e As EventArgs) Handles BtnOptions.Click
+        Me.Hide()
+        FormOptions.Show()
+
     End Sub
 End Class

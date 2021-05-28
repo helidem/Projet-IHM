@@ -22,76 +22,23 @@ Partial Class FormOptions
     'Ne la modifiez pas à l'aide de l'éditeur de code.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.PanelTimer = New System.Windows.Forms.Panel()
-        Me.LblTimer = New System.Windows.Forms.Label()
-        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton2 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton3 = New System.Windows.Forms.RadioButton()
         Me.LblTheme = New System.Windows.Forms.Label()
         Me.RadioButton4 = New System.Windows.Forms.RadioButton()
         Me.RadioButton5 = New System.Windows.Forms.RadioButton()
         Me.RadioButton6 = New System.Windows.Forms.RadioButton()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.PanelTimer.SuspendLayout()
+        Me.LblTimer = New System.Windows.Forms.Label()
+        Me.TextBoxTime = New System.Windows.Forms.TextBox()
+        Me.BtnValiderTemps = New System.Windows.Forms.Button()
+        Me.BtnRetour = New System.Windows.Forms.Button()
+        Me.ButtonDefault = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'PanelTimer
-        '
-        Me.PanelTimer.Controls.Add(Me.RadioButton3)
-        Me.PanelTimer.Controls.Add(Me.RadioButton2)
-        Me.PanelTimer.Controls.Add(Me.RadioButton1)
-        Me.PanelTimer.Location = New System.Drawing.Point(183, 72)
-        Me.PanelTimer.Name = "PanelTimer"
-        Me.PanelTimer.Size = New System.Drawing.Size(412, 75)
-        Me.PanelTimer.TabIndex = 0
-        '
-        'LblTimer
-        '
-        Me.LblTimer.AutoSize = True
-        Me.LblTimer.Location = New System.Drawing.Point(93, 100)
-        Me.LblTimer.Name = "LblTimer"
-        Me.LblTimer.Size = New System.Drawing.Size(83, 13)
-        Me.LblTimer.TabIndex = 1
-        Me.LblTimer.Text = "Temps de partie"
-        '
-        'RadioButton1
-        '
-        Me.RadioButton1.AutoSize = True
-        Me.RadioButton1.Location = New System.Drawing.Point(40, 28)
-        Me.RadioButton1.Name = "RadioButton1"
-        Me.RadioButton1.Size = New System.Drawing.Size(90, 17)
-        Me.RadioButton1.TabIndex = 0
-        Me.RadioButton1.TabStop = True
-        Me.RadioButton1.Text = "RadioButton1"
-        Me.RadioButton1.UseVisualStyleBackColor = True
-        '
-        'RadioButton2
-        '
-        Me.RadioButton2.AutoSize = True
-        Me.RadioButton2.Location = New System.Drawing.Point(166, 28)
-        Me.RadioButton2.Name = "RadioButton2"
-        Me.RadioButton2.Size = New System.Drawing.Size(90, 17)
-        Me.RadioButton2.TabIndex = 1
-        Me.RadioButton2.TabStop = True
-        Me.RadioButton2.Text = "RadioButton2"
-        Me.RadioButton2.UseVisualStyleBackColor = True
-        '
-        'RadioButton3
-        '
-        Me.RadioButton3.AutoSize = True
-        Me.RadioButton3.Location = New System.Drawing.Point(290, 28)
-        Me.RadioButton3.Name = "RadioButton3"
-        Me.RadioButton3.Size = New System.Drawing.Size(90, 17)
-        Me.RadioButton3.TabIndex = 2
-        Me.RadioButton3.TabStop = True
-        Me.RadioButton3.Text = "RadioButton3"
-        Me.RadioButton3.UseVisualStyleBackColor = True
         '
         'LblTheme
         '
         Me.LblTheme.AutoSize = True
-        Me.LblTheme.Location = New System.Drawing.Point(103, 219)
+        Me.LblTheme.Location = New System.Drawing.Point(95, 177)
         Me.LblTheme.Name = "LblTheme"
         Me.LblTheme.Size = New System.Drawing.Size(40, 13)
         Me.LblTheme.TabIndex = 2
@@ -135,39 +82,82 @@ Partial Class FormOptions
         Me.Panel1.Controls.Add(Me.RadioButton4)
         Me.Panel1.Controls.Add(Me.RadioButton5)
         Me.Panel1.Controls.Add(Me.RadioButton6)
-        Me.Panel1.Location = New System.Drawing.Point(183, 193)
+        Me.Panel1.Location = New System.Drawing.Point(175, 151)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(412, 75)
         Me.Panel1.TabIndex = 3
+        '
+        'LblTimer
+        '
+        Me.LblTimer.AutoSize = True
+        Me.LblTimer.Location = New System.Drawing.Point(93, 100)
+        Me.LblTimer.Name = "LblTimer"
+        Me.LblTimer.Size = New System.Drawing.Size(147, 13)
+        Me.LblTimer.TabIndex = 1
+        Me.LblTimer.Text = "Temps de partie en secondes"
+        '
+        'TextBoxTime
+        '
+        Me.TextBoxTime.Location = New System.Drawing.Point(260, 97)
+        Me.TextBoxTime.Name = "TextBoxTime"
+        Me.TextBoxTime.Size = New System.Drawing.Size(100, 20)
+        Me.TextBoxTime.TabIndex = 4
+        '
+        'BtnValiderTemps
+        '
+        Me.BtnValiderTemps.Location = New System.Drawing.Point(428, 97)
+        Me.BtnValiderTemps.Name = "BtnValiderTemps"
+        Me.BtnValiderTemps.Size = New System.Drawing.Size(75, 23)
+        Me.BtnValiderTemps.TabIndex = 5
+        Me.BtnValiderTemps.Text = "Valider"
+        Me.BtnValiderTemps.UseVisualStyleBackColor = True
+        '
+        'BtnRetour
+        '
+        Me.BtnRetour.Location = New System.Drawing.Point(15, 12)
+        Me.BtnRetour.Name = "BtnRetour"
+        Me.BtnRetour.Size = New System.Drawing.Size(90, 32)
+        Me.BtnRetour.TabIndex = 6
+        Me.BtnRetour.Text = "Menu Principal"
+        Me.BtnRetour.UseVisualStyleBackColor = True
+        '
+        'ButtonDefault
+        '
+        Me.ButtonDefault.Location = New System.Drawing.Point(71, 292)
+        Me.ButtonDefault.Name = "ButtonDefault"
+        Me.ButtonDefault.Size = New System.Drawing.Size(151, 25)
+        Me.ButtonDefault.TabIndex = 7
+        Me.ButtonDefault.Text = "Rétablir les options par defaut"
+        Me.ButtonDefault.UseVisualStyleBackColor = True
         '
         'FormOptions
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(698, 343)
+        Me.Controls.Add(Me.ButtonDefault)
+        Me.Controls.Add(Me.BtnRetour)
+        Me.Controls.Add(Me.BtnValiderTemps)
+        Me.Controls.Add(Me.TextBoxTime)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.LblTheme)
         Me.Controls.Add(Me.LblTimer)
-        Me.Controls.Add(Me.PanelTimer)
         Me.Name = "FormOptions"
         Me.Text = "FormOptions"
-        Me.PanelTimer.ResumeLayout(False)
-        Me.PanelTimer.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents PanelTimer As Panel
-    Friend WithEvents RadioButton3 As RadioButton
-    Friend WithEvents RadioButton2 As RadioButton
-    Friend WithEvents RadioButton1 As RadioButton
-    Friend WithEvents LblTimer As Label
     Friend WithEvents LblTheme As Label
     Friend WithEvents RadioButton4 As RadioButton
     Friend WithEvents RadioButton5 As RadioButton
     Friend WithEvents RadioButton6 As RadioButton
     Friend WithEvents Panel1 As Panel
+    Friend WithEvents LblTimer As Label
+    Friend WithEvents TextBoxTime As TextBox
+    Friend WithEvents BtnValiderTemps As Button
+    Friend WithEvents BtnRetour As Button
+    Friend WithEvents ButtonDefault As Button
 End Class

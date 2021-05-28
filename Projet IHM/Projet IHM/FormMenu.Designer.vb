@@ -35,48 +35,43 @@ Partial Class FormMenu
         'ComboBoxNom
         '
         Me.ComboBoxNom.FormattingEnabled = True
-        Me.ComboBoxNom.Location = New System.Drawing.Point(237, 182)
-        Me.ComboBoxNom.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.ComboBoxNom.Location = New System.Drawing.Point(158, 118)
         Me.ComboBoxNom.Name = "ComboBoxNom"
-        Me.ComboBoxNom.Size = New System.Drawing.Size(180, 28)
+        Me.ComboBoxNom.Size = New System.Drawing.Size(121, 21)
         Me.ComboBoxNom.TabIndex = 0
         '
         'BtnJouer
         '
-        Me.BtnJouer.Location = New System.Drawing.Point(160, 252)
-        Me.BtnJouer.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.BtnJouer.Location = New System.Drawing.Point(107, 164)
         Me.BtnJouer.Name = "BtnJouer"
-        Me.BtnJouer.Size = New System.Drawing.Size(188, 35)
+        Me.BtnJouer.Size = New System.Drawing.Size(125, 23)
         Me.BtnJouer.TabIndex = 1
         Me.BtnJouer.Text = "Jouer"
         Me.BtnJouer.UseVisualStyleBackColor = True
         '
         'BtnOptions
         '
-        Me.BtnOptions.Location = New System.Drawing.Point(160, 298)
-        Me.BtnOptions.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.BtnOptions.Location = New System.Drawing.Point(107, 194)
         Me.BtnOptions.Name = "BtnOptions"
-        Me.BtnOptions.Size = New System.Drawing.Size(188, 35)
+        Me.BtnOptions.Size = New System.Drawing.Size(125, 23)
         Me.BtnOptions.TabIndex = 2
         Me.BtnOptions.Text = "Options"
         Me.BtnOptions.UseVisualStyleBackColor = True
         '
         'BtnScores
         '
-        Me.BtnScores.Location = New System.Drawing.Point(160, 343)
-        Me.BtnScores.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.BtnScores.Location = New System.Drawing.Point(107, 223)
         Me.BtnScores.Name = "BtnScores"
-        Me.BtnScores.Size = New System.Drawing.Size(188, 35)
+        Me.BtnScores.Size = New System.Drawing.Size(125, 23)
         Me.BtnScores.TabIndex = 3
         Me.BtnScores.Text = "Score"
         Me.BtnScores.UseVisualStyleBackColor = True
         '
         'BtnQuitter
         '
-        Me.BtnQuitter.Location = New System.Drawing.Point(160, 388)
-        Me.BtnQuitter.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.BtnQuitter.Location = New System.Drawing.Point(107, 252)
         Me.BtnQuitter.Name = "BtnQuitter"
-        Me.BtnQuitter.Size = New System.Drawing.Size(188, 35)
+        Me.BtnQuitter.Size = New System.Drawing.Size(125, 23)
         Me.BtnQuitter.TabIndex = 4
         Me.BtnQuitter.Text = "Quitter"
         Me.BtnQuitter.UseVisualStyleBackColor = True
@@ -84,10 +79,9 @@ Partial Class FormMenu
         'LblNom
         '
         Me.LblNom.AutoSize = True
-        Me.LblNom.Location = New System.Drawing.Point(82, 188)
-        Me.LblNom.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.LblNom.Location = New System.Drawing.Point(55, 122)
         Me.LblNom.Name = "LblNom"
-        Me.LblNom.Size = New System.Drawing.Size(142, 20)
+        Me.LblNom.Size = New System.Drawing.Size(96, 13)
         Me.LblNom.TabIndex = 5
         Me.LblNom.Text = "Entrez votre nom : "
         '
@@ -96,17 +90,18 @@ Partial Class FormMenu
         Me.PictureBoxMemory.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.PictureBoxMemory.Image = Global.Projet_IHM.My.Resources.Resources.memory
         Me.PictureBoxMemory.ImageLocation = ""
-        Me.PictureBoxMemory.Location = New System.Drawing.Point(86, 32)
+        Me.PictureBoxMemory.Location = New System.Drawing.Point(57, 21)
+        Me.PictureBoxMemory.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.PictureBoxMemory.Name = "PictureBoxMemory"
-        Me.PictureBoxMemory.Size = New System.Drawing.Size(358, 111)
+        Me.PictureBoxMemory.Size = New System.Drawing.Size(239, 72)
         Me.PictureBoxMemory.TabIndex = 6
         Me.PictureBoxMemory.TabStop = False
         '
         'FormMenu
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(526, 429)
+        Me.ClientSize = New System.Drawing.Size(351, 279)
         Me.Controls.Add(Me.PictureBoxMemory)
         Me.Controls.Add(Me.LblNom)
         Me.Controls.Add(Me.BtnQuitter)
@@ -114,7 +109,6 @@ Partial Class FormMenu
         Me.Controls.Add(Me.BtnOptions)
         Me.Controls.Add(Me.BtnJouer)
         Me.Controls.Add(Me.ComboBoxNom)
-        Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "FormMenu"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Menu principal"

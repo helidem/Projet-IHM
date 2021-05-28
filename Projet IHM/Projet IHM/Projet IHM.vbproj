@@ -85,12 +85,6 @@
     <Compile Include="FormOptions.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormSauvegardeNom.designer.vb">
-      <DependentUpon>FormSauvegardeNom.vb</DependentUpon>
-    </Compile>
-    <Compile Include="FormSauvegardeNom.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="FormMenu.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -126,14 +120,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="traitementOptions.vb" />
     <Compile Include="traitementsJoueurs.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="FormOptions.resx">
       <DependentUpon>FormOptions.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormSauvegardeNom.resx">
-      <DependentUpon>FormSauvegardeNom.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMenu.resx">
       <DependentUpon>FormMenu.vb</DependentUpon>
@@ -167,11 +159,30 @@
   <ItemGroup>
     <Content Include="game.ico" />
     <Content Include="Images\BackCard.png" />
+    <Content Include="Images\benzema.png" />
     <Content Include="Images\Card0.png" />
     <Content Include="Images\Card1.png" />
     <Content Include="Images\Card2.png" />
     <Content Include="Images\Card3.png" />
     <Content Include="Images\Card4.png" />
+    <Content Include="Images\courtois.png" />
+    <Content Include="Images\courtoisNB.jpg" />
+    <Content Include="Images\kimpembe.png" />
+    <Content Include="Images\kimpembeNB.png" />
+    <Content Include="Images\kroos.png" />
+    <Content Include="Images\kroosNB.jpg" />
+    <Content Include="Images\marqui.png" />
+    <Content Include="Images\marquiNB.jpg" />
+    <Content Include="Images\mbappé.png" />
+    <Content Include="Images\mbappéNB.jpg" />
+    <Content Include="Images\modric.png" />
+    <Content Include="Images\modricNB.jpg" />
+    <Content Include="Images\navas.png" />
+    <Content Include="Images\navasNB.jpg" />
+    <Content Include="Images\varane.png" />
+    <Content Include="Images\varaneNB.jpg" />
+    <Content Include="Images\verrati.png" />
+    <Content Include="Images\verratiNB.png" />
     <None Include="Images\memory.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
