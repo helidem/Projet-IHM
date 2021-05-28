@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{2A850480-D61B-4DFF-BE87-D697CC2A7B2B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>Sub Main</StartupObject>
+    <StartupObject>Projet_IHM.FormMenu</StartupObject>
     <RootNamespace>Projet_IHM</RootNamespace>
     <AssemblyName>Projet IHM</AssemblyName>
     <FileAlignment>512</FileAlignment>
@@ -120,7 +120,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="traitementOptions.vb" />
+    <Compile Include="traitementsOptions.vb" />
     <Compile Include="traitementsJoueurs.vb" />
   </ItemGroup>
   <ItemGroup>
@@ -132,6 +132,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormJeu.resx">
       <DependentUpon>FormJeu.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FormScores.resx">
       <DependentUpon>FormScores.vb</DependentUpon>

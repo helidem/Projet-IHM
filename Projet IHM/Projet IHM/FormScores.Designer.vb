@@ -22,40 +22,58 @@ Partial Class FormScores
     'Ne la modifiez pas à l'aide de l'éditeur de code.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.ListBox1 = New System.Windows.Forms.ListBox()
+        Me.ListBoxScores = New System.Windows.Forms.ListBox()
         Me.BtnRetour = New System.Windows.Forms.Button()
+        Me.LblTitreScores = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
-        'ListBox1
+        'ListBoxScores
         '
-        Me.ListBox1.FormattingEnabled = True
-        Me.ListBox1.Location = New System.Drawing.Point(134, 100)
-        Me.ListBox1.Name = "ListBox1"
-        Me.ListBox1.Size = New System.Drawing.Size(527, 303)
-        Me.ListBox1.TabIndex = 0
+        Me.ListBoxScores.FormattingEnabled = True
+        Me.ListBoxScores.ItemHeight = 20
+        Me.ListBoxScores.Location = New System.Drawing.Point(57, 143)
+        Me.ListBoxScores.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.ListBoxScores.Name = "ListBoxScores"
+        Me.ListBoxScores.Size = New System.Drawing.Size(788, 464)
+        Me.ListBoxScores.TabIndex = 0
         '
         'BtnRetour
         '
-        Me.BtnRetour.Location = New System.Drawing.Point(35, 22)
+        Me.BtnRetour.Location = New System.Drawing.Point(385, 626)
+        Me.BtnRetour.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.BtnRetour.Name = "BtnRetour"
-        Me.BtnRetour.Size = New System.Drawing.Size(129, 44)
+        Me.BtnRetour.Size = New System.Drawing.Size(153, 52)
         Me.BtnRetour.TabIndex = 1
-        Me.BtnRetour.Text = "Menu Principal"
+        Me.BtnRetour.Text = "Menu principal"
         Me.BtnRetour.UseVisualStyleBackColor = True
+        '
+        'LblTitreScores
+        '
+        Me.LblTitreScores.AutoSize = True
+        Me.LblTitreScores.Font = New System.Drawing.Font("Showcard Gothic", 16.0!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblTitreScores.Location = New System.Drawing.Point(290, 50)
+        Me.LblTitreScores.Name = "LblTitreScores"
+        Me.LblTitreScores.Size = New System.Drawing.Size(341, 40)
+        Me.LblTitreScores.TabIndex = 2
+        Me.LblTitreScores.Text = "Tableau des scores"
         '
         'FormScores
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(813, 566)
+        Me.ClientSize = New System.Drawing.Size(911, 701)
+        Me.Controls.Add(Me.LblTitreScores)
         Me.Controls.Add(Me.BtnRetour)
-        Me.Controls.Add(Me.ListBox1)
+        Me.Controls.Add(Me.ListBoxScores)
+        Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "FormScores"
         Me.Text = "FormScores"
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
-    Friend WithEvents ListBox1 As ListBox
+    Friend WithEvents ListBoxScores As ListBox
     Friend WithEvents BtnRetour As Button
+    Friend WithEvents LblTitreScores As Label
 End Class

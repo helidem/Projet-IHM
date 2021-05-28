@@ -10,11 +10,13 @@
     'Retient le temps de la partie
     Private TEMPS_PARTIE As Integer
     Private tempsTexte As String
-    Public themeList() As ImageList
 
-    'Retient le score du joueur, c'est à dire son nombre de cartes
-    Private cartes As Integer = 0
-    'Retient le temps mis pour trouver x cartes
+    'Retient le thème de la partie
+    Private themeList() As ImageList
+
+    'Retient le score du joueur, c'est à dire son nombre de serie
+    Private serie As Integer = 0
+    'Retient le temps mis pour trouver x serie
     'On l'initialise à TEMPS_PARTIE pour que si le joueur ne trouve aucune carte, le temps soit déjà à TEMPS_PARTIE
     '(le maximum)
     Private temps As Integer
@@ -34,7 +36,7 @@
     'Initialisé à "", car aucune carte n'est sélectionnée
     Private nomsCartesChoisies() As String = {"", "", "", ""}
 
-    'Tableau mémorisant le tag des cartes trouvées
+    'Tableau mémorisant le tag des serie trouvées
     'Initialisé à -1, car aucune série n'a été trouvée
     Private seriesTerminees() As Integer = {-1, -1, -1, -1, -1}
     'Retient le nombre de série(s) terminée(s), et donc l'index du tableau précédent
@@ -46,7 +48,7 @@
     Private pause As Boolean = False
 
     '-----------------------------------------------------------------------------------------------
-    'Getters and Setters
+    'Getters
     '-----------------------------------------------------------------------------------------------
 
     '@brief Retourne le temps de la partie
@@ -54,12 +56,6 @@
     Public Function getTemps() As Integer
         Return TEMPS_PARTIE
     End Function
-
-    '@brief Met le temps de la partie
-    '@param[in] temps le nouveau temps de la partie
-    Public Sub setTemps(temps As Integer)
-        TEMPS_PARTIE = temps
-    End Sub
 
     '-----------------------------------------------------------------------------------------------
     'Load
@@ -69,23 +65,28 @@
     'de retourner les cartes, d'afficher le nom du joueur, de convertir le temps en texte, de rendre
     'invisible le BtnReprendre, de mélanger et d'attribuer les cartes
     '@param[in] sender et e
+    '@see afficheNomJoueur()
+    '@see traitementOptions.getTime() du module traitementOptions.vb
+    '@see convertTempsToTempsTexte()
+    '@see melanger()
+    '@see attribuer()
+    '@see retournerCartes()
     Private Sub FormJeu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-        themeList = {ImageListDefaut, ImageListPSG, ImageListRMA}
-
         'Enlève le ControlBox
         Me.ControlBox = False
         'Permet de pouvoir déplacer la fenêtre, mais de ne pas pouvoir la redimensionner
         Me.FormBorderStyle = FormBorderStyle.FixedSingle
         'Adapte la taille de la fenêtre automatiquement
         Me.AutoSize = True
-        retournerToutesLesCartes()
+
+        'Associe themeList() aux ImageLists
+        themeList = {ImageListDefaut, ImageListPSG, ImageListRMA}
 
         'Affiche le nom du joueur à la place du LblJoueurModif.Text
         afficheNomJoueur()
 
         'Attribue le temps de la partie grâce à traitementOption.getTime()
-        TEMPS_PARTIE = getTime()
+        TEMPS_PARTIE = traitementsOptions.getTime()
         temps = TEMPS_PARTIE
         convertTempsToTempsTexte()
         LblTpsRestantModif.Text = tempsTexte
@@ -94,19 +95,77 @@
 
         melanger(liste)
         attribuer()
+        retournerCartes()
     End Sub
 
     '-----------------------------------------------------------------------------------------------
-    'Sub pour le load
+    'Sub pour le Load
     '-----------------------------------------------------------------------------------------------
 
+    '@brief Affiche le nom du joueur à la place du LblJoueurModif.Text
+    '@see FormMenu.vb
+    Private Sub afficheNomJoueur()
+        LblJoueurModif.Text = FormMenu.ComboBoxNom.Text
+    End Sub
+
+    '@brief Convertit TEMPS_PARTIE en String pouvant être exploitable par le TimerTempsRestant
+    'Le TimerTempsRestant utilise ce String comme "Point de départ" du timer
+    '@see TimerTempsRestant_Tick()
+    Private Sub convertTempsToTempsTexte()
+        Dim tempsTexteFunct As String = "0"
+        'On ajoute le nombre de minutes au String tempsTexteFunct
+        tempsTexteFunct &= CStr(Math.Floor(TEMPS_PARTIE / 60))
+        tempsTexteFunct &= ":"
+        'On ajoute le nombre de secondes au String tempsTexteFunct
+        If CStr(TEMPS_PARTIE Mod 60) < 10 Then
+            tempsTexteFunct &= "0" & CStr(TEMPS_PARTIE Mod 60)
+        Else
+            tempsTexteFunct &= CStr(TEMPS_PARTIE Mod 60)
+        End If
+
+        tempsTexte = tempsTexteFunct
+    End Sub
+
+    '@brief Mélange la liste, pour avoir les cartes mélangées
+    Private Sub melanger(liste)
+        'Pour générer aléatoirement le placement des cartes
+        Dim random As New Random
+
+        Dim ind As Integer() = New Integer(liste.Length - 1) {}
+        Dim index As Integer
+
+        'On met tous les indices à 0
+        For i As Integer = 0 To liste.Length - 1
+            ind(i) = 0
+        Next
+
+        'On met un indice aléatoire, grâce au tableau liste
+        For i As Integer = 0 To liste.Length - 1
+            Do
+                index = random.[Next](liste.Length)
+            Loop While ind(index) <> 0
+
+            ind(index) = 1
+            'On copie ce tableau dans tabMelange()
+            tabMelange(i) = liste(index)
+        Next
+    End Sub
+
+    '@brief Attribue chaque tag à un numéro du tableau tabMelange()
+    Private Sub attribuer()
+        For i As Integer = 0 To PnlCarte.Controls.Count - 1
+            PnlCarte.Controls(i).Tag = tabMelange(i)
+        Next
+    End Sub
+
     '@brief Permet de retourner les cartes des séries non-terminées
-    Private Sub retournerToutesLesCartes()
+    '@see traitementsOptions.getTheme
+    Private Sub retournerCartes()
         For Each carte As Label In PnlCarte.Controls
             'Si la carte fait partie d'une série terminée
             If seriesTerminees.Contains(carte.Tag) Then
                 'On met l'image en noir et blanc
-                carte.Image = themeList(theme).Images(carte.Tag + 6)
+                carte.Image = themeList(traitementsOptions.getTheme).Images(carte.Tag + 6)
 
                 'On passe au suivant
                 Continue For
@@ -123,58 +182,6 @@
         For i As Integer = 0 To nomsCartesChoisies.Length - 1
             nomsCartesChoisies(i) = ""
             tagCartesChoisies(i) = -1
-        Next
-    End Sub
-
-    '@brief Affiche le nom du joueur à la place du LblJoueurModif.Text
-    Private Sub afficheNomJoueur()
-        LblJoueurModif.Text = FormMenu.ComboBoxNom.Text
-    End Sub
-
-    '@brief Convertit TEMPS_PARTIE en String pouvant être exploitable par le TimerTempsRestant
-    'Le TimerTempsRestant utilise se String comme "Point de départ" du timer
-    '@see TimerTempsRestant_Tick()
-    Private Sub convertTempsToTempsTexte()
-        Dim tempsTexteFunct As String = "0"
-        'On ajoute le nombre de minutes au String tempsTexteFunct
-        tempsTexteFunct &= CStr(Math.Floor(TEMPS_PARTIE / 60))
-        tempsTexteFunct &= ":"
-        'On ajoute le nombre de secondes au String tempsTexteFunct
-        If CStr(TEMPS_PARTIE Mod 60) < 10 Then
-            tempsTexteFunct &= "0" & CStr(TEMPS_PARTIE Mod 60)
-        Else
-            tempsTexteFunct &= CStr(TEMPS_PARTIE Mod 60)
-        End If
-        tempsTexte = tempsTexteFunct
-    End Sub
-
-    '@brief Mélange la liste, pour avoir les cartes mélangées
-    Private Sub melanger(liste)
-
-        'Pour générer aléatoirement le placement des cartes
-        Dim random As New Random
-
-        Dim ind As Integer() = New Integer(liste.Length - 1) {}
-        Dim index As Integer
-
-        For i As Integer = 0 To liste.Length - 1
-            ind(i) = 0
-        Next
-
-        For i As Integer = 0 To liste.Length - 1
-            Do
-                index = random.[Next](liste.Length)
-            Loop While ind(index) <> 0
-
-            ind(index) = 1
-            tabMelange(i) = liste(index)
-        Next
-    End Sub
-
-    '@brief Attribue chaque tag à un numéro du tableau tabMelange()
-    Private Sub attribuer()
-        For i As Integer = 0 To PnlCarte.Controls.Count - 1
-            PnlCarte.Controls(i).Tag = tabMelange(i)
         Next
     End Sub
 
@@ -203,11 +210,12 @@
     '@brief Permet de retourner les cartes et faire toutes les vérifications sur celles-ci
     'Les 20 LabelImg sont Handles
     '@param[in] sender et e
-    '@see carteUnique(ByVal name As String)
+    '@see carteUnique(name As String)
     '@see carteCliqueSerieTerminee()
+    '@see traitementsOptions.getTheme
     '@see serieTerminee()
     '@see conversionTemps()
-    '@see retournerToutesLesCartes()
+    '@see retournerCartes()
     '@see partieFinie()
     '@see premierChoix()
     '@see cartesEgales()
@@ -248,17 +256,17 @@
         End If
 
         'Permet d'afficher la carte
-        sender.image = themeList(theme).Images(sender.tag)
+        sender.image = themeList(traitementsOptions.getTheme).Images(sender.tag)
 
         If serieTerminee() Then
             'Le score du joueur est incrémenté
-            cartes += 1
+            serie += 1
             'Le temps du joueur est mis à jour
             temps = conversionTemps()
             'On rentre cette série comme terminée dans le tableau
             seriesTerminees(nbSeriesTerminees) = sender.tag
             nbSeriesTerminees = nbSeriesTerminees + 1
-            retournerToutesLesCartes()
+            retournerCartes()
             'Si toutes les séries sont trouvées (et donc le tableau ne contient plus -1)
             If Not seriesTerminees.Contains(-1) Then
                 partieFinie()
@@ -303,7 +311,7 @@
     '@param[in] name le nom de la carte
     '@return True si la carte n'a pas déjà été selectionnée
     '@return False si la carte a déjà été selectionnée
-    Private Function carteUnique(ByVal name As String) As Boolean
+    Private Function carteUnique(name As String) As Boolean
         For i As Integer = 0 To nomsCartesChoisies.Length - 1
             'Vérifie que le nom (qui est unique) fait partie du tableau nomsCartesChoisies()
             If name = nomsCartesChoisies(i) Then
@@ -348,9 +356,10 @@
     End Function
 
     '@brief Permet de suspendre l'interaction utilisateur pendant que le programme montre la mauvaise carte
+    '@see retournerCartes()
     Private Sub TimerVisionnerCarte_Tick(sender As Object, e As EventArgs) Handles TimerVisionnerCarte.Tick
         TimerVisionnerCarte.Stop()
-        retournerToutesLesCartes()
+        retournerCartes()
     End Sub
 
     '-----------------------------------------------------------------------------------------------
@@ -376,7 +385,7 @@
 
     '@brief Permet de reprendre la partie
     '@param[in] sender et e
-    Private Sub Reprendre(sender As Object, e As EventArgs) Handles BtnReprendre.Click
+    Private Sub reprendre(sender As Object, e As EventArgs) Handles BtnReprendre.Click
         'Cache le bouton "Reprendre"
         BtnReprendre.Visible = False
         'Rend le bouton "Pause" visible
@@ -392,27 +401,28 @@
     '-----------------------------------------------------------------------------------------------
 
     '@brief Permet de traiter la fin de partie
+    '@see traitementsJoueurs.traitementSauvegarde(joueur)
     Private Sub partieFinie()
         'Stoppe le timer
         TimerTempsRestant.Enabled = False
 
         'Enregistre les statistiques du joueur dans la structure
-        joueur.cartes = cartes
+        joueur.serie = serie
         joueur.nom = LblJoueurModif.Text
         joueur.temps = temps
 
         'Sauvegarde les informations du joueur
-        traitementSauvegarde(joueur)
+        traitementsJoueurs.traitementSauvegarde(joueur)
 
         'Si le joueur n'a trouvé aucun carré
         If temps = TEMPS_PARTIE Then
-            If MsgBox(LblJoueurModif.Text & ", vous n'avez trouvé aucun carré. Votre score est donc de " & cartes &
+            If MsgBox(LblJoueurModif.Text & ", vous n'avez trouvé aucun carré. Votre score est donc de " & serie &
                       ", et votre temps est de " & temps & " secondes.", vbOKOnly, "Partie perdue") = vbOK Then
                 Me.Close()
                 FormMenu.Show()
             End If
         Else
-            If MsgBox(LblJoueurModif.Text & ", la partie est finie. Votre score est de " & cartes &
+            If MsgBox(LblJoueurModif.Text & ", la partie est finie. Votre score est de " & serie &
                       ", et votre temps est de " & temps & " secondes.", vbOKOnly, "Partie terminée") = vbOK Then
                 Me.Close()
                 FormMenu.Show()

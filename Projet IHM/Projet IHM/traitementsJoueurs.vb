@@ -5,32 +5,17 @@ Module traitementsJoueurs
     Structure Joueur
         Dim nom As String
         Dim temps As Integer
-        Dim cartes As Integer
-        Dim cumultemps As Integer
+        Dim serie As Integer
+        Dim cumulTemps As Integer
         Dim nbparties As Integer
     End Structure
 
     'Enregistre brièvement chaque attribut d'un joueur, séparé dans le fichier texte par ";"
-    Dim txt() As String
+    Private txt() As String
     'Enregistre tous les joueurs
     Public tabJoueurs(0) As Joueur
     'Enregistre le nombre de joueurs
-    Dim nbj As Integer = 0
-
-    '-----------------------------------------------------------------------------------------------
-    'MAIN
-    '-----------------------------------------------------------------------------------------------
-
-    '@brief Sub principal du programme. Permet de récupérer tous les joueurs depuis le fichier texte, d'initialiser les
-    'options et de lancer le formulaire Menu
-    '@see recupererJoueurs
-    '@see initOption() de traitementOptions.vb
-    Public Sub Main()
-        'Récupère les joueurs depuis le fichier texte pour les mettre dans tabJoueurs
-        recupererJoueurs()
-        initOption()
-        Application.Run(FormMenu)
-    End Sub
+    Private nbj As Integer = 0
 
     '-----------------------------------------------------------------------------------------------
     'recupererJoueurs et ses fonctions
@@ -55,9 +40,9 @@ Module traitementsJoueurs
                 'Enregistrement du joueur dans la structure
                 With j
                     .nom = txt(0)
-                    .cartes = txt(1)
+                    .serie = txt(1)
                     .temps = txt(2)
-                    .cumultemps = txt(3)
+                    .cumulTemps = txt(3)
                     .nbparties = txt(4)
                 End With
                 'Passage du joueur dans tabJoueurs
@@ -96,30 +81,10 @@ Module traitementsJoueurs
         End If
     End Sub
 
-    '@brief Permet de traiter un joueur existant, en le mettant à jour selon les nouveaux critères
-    '@param[in] joueur le Joueur à traiter
-    Private Sub traiterJoueurExistant(joueur As Joueur)
-        For k As Integer = 0 To tabJoueurs.Length - 1 'ancien score
-            If (tabJoueurs(k).nom = joueur.nom) Then
-                If joueur.cartes = 5 Then
-                    tabJoueurs(k).cumultemps = tabJoueurs(k).cumultemps + joueur.temps
-                Else
-                    tabJoueurs(k).cumultemps = tabJoueurs(k).cumultemps + FormJeu.getTemps()
-                End If
-
-                tabJoueurs(k).nbparties = tabJoueurs(k).nbparties + 1
-                If tabJoueurs(k).cartes < joueur.cartes Or (tabJoueurs(k).cartes = joueur.cartes And tabJoueurs(k).temps > joueur.temps) Then
-                    MsgBox("T'as battu ton score")
-                    tabJoueurs(k).cartes = joueur.cartes
-                    tabJoueurs(k).temps = joueur.temps
-                End If
-
-                mettreAJour()
-                Exit For
-            End If
-        Next
-    End Sub
-
+    '@brief Vérifie si un joueur est déjà répertorié dans la sauvegarde ou non
+    '@param[in] joueur le Joueur à vérifier
+    '@return True si le joueur est répertorié dans la sauvegarde
+    '@return False si le joueur n'est pas répertorié dans la sauvegarde
     Private Function joueurExistant(joueur As Joueur) As Boolean
         For i As Integer = 0 To tabJoueurs.Length - 1
             If joueur.nom = tabJoueurs(i).nom Then
@@ -129,23 +94,64 @@ Module traitementsJoueurs
         Return False
     End Function
 
+    '@brief Permet de traiter un joueur existant, en le mettant à jour selon les nouveaux critères
+    '@param[in] joueur le Joueur à traiter
+    '@see FormJeu.getTemps()
+    Private Sub traiterJoueurExistant(joueur As Joueur)
+        For k As Integer = 0 To tabJoueurs.Length - 1
+            'Si le nom du joueur est déjà enregistré
+            If (tabJoueurs(k).nom = joueur.nom) Then
+                If joueur.serie = 5 Then
+                    'Si le joueur à un score maximal, alors son temps nous intéresse, car c'est le temps qu'il a joué.
+                    'Nous additionnons donc son temps avec son cumulTemps.
+                    tabJoueurs(k).cumulTemps += joueur.temps
+                Else
+                    'Si le joueur n'a pas le score maximal, alors le TEMPS_MAXIMAL nous intéresse.
+                    'Nous additionnons donc le TEMPS_MAXIMAL (trouvé grâce au Getter) avec son cumulTemps.
+                    tabJoueurs(k).cumulTemps += FormJeu.getTemps()
+                End If
+
+                'Incrémentation du nombre de parties
+                tabJoueurs(k).nbparties += 1
+
+                'Si le joueur a trouvé un plus grand nombre de série, ou si il a mis moins de temps pour trouver le même nombre
+                If tabJoueurs(k).serie < joueur.serie Or (tabJoueurs(k).serie = joueur.serie And tabJoueurs(k).temps > joueur.temps) Then
+                    MsgBox("T'as battu ton score")
+                    'Mise à jour du record
+                    tabJoueurs(k).serie = joueur.serie
+                    tabJoueurs(k).temps = joueur.temps
+                End If
+
+                mettreAJour()
+                Exit For
+            End If
+        Next
+    End Sub
+
+    '@brief Permet de mettre à jour le fichier texte
     Private Sub mettreAJour()
         Dim f As New StreamWriter("test.txt", False)
         For Each j As Joueur In tabJoueurs
+            'Permet de ne pas écrire si le nom est nul, à cause du vbNewLine
             If Not j.nom = vbNullString Then
-                f.WriteLine(j.nom & ";" & j.cartes & ";" & j.temps & ";" & j.cumultemps & ";" & j.nbparties)
+                f.WriteLine(j.nom & ";" & j.serie & ";" & j.temps & ";" & j.cumulTemps & ";" & j.nbparties)
             End If
         Next j
         f.Close()
     End Sub
 
+    '@brief Permet de traiter un nouveau joueur, en l'initialisant
+    '@param[in] joueur le Joueur à traiter
+    '@see FormJeu.getTemps()
     Private Sub traiterNouveauJoueur(joueur As Joueur)
-        If joueur.cartes = 5 Then
-            joueur.cumultemps = joueur.cumultemps + joueur.temps
+        If joueur.serie = 5 Then
+            joueur.cumulTemps = joueur.cumulTemps + joueur.temps
         Else
-            joueur.cumultemps = joueur.cumultemps + FormJeu.getTemps()
+            joueur.cumulTemps = joueur.cumulTemps + FormJeu.getTemps()
         End If
+        'Initialisation de son nombre de parties
         joueur.nbparties = 1
-        My.Computer.FileSystem.WriteAllText("test.txt", joueur.nom & ";" & joueur.cartes & ";" & joueur.temps & ";" & joueur.cumultemps & ";" & joueur.nbparties & vbNewLine, True)
+        'Ecriture du nouveau joueur dans le fichier de sauvegarde
+        My.Computer.FileSystem.WriteAllText("test.txt", joueur.nom & ";" & joueur.serie & ";" & joueur.temps & ";" & joueur.cumulTemps & ";" & joueur.nbparties & vbNewLine, True)
     End Sub
 End Module
