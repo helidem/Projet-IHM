@@ -71,7 +71,7 @@
     '@param[in] sender et e
     Private Sub FormJeu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        themeList = {ImageListDefaut, ImageListPSG}
+        themeList = {ImageListDefaut, ImageListPSG, ImageListRMA}
 
         'Enlève le ControlBox
         Me.ControlBox = False
@@ -83,6 +83,8 @@
 
         'Affiche le nom du joueur à la place du LblJoueurModif.Text
         afficheNomJoueur()
+
+        'Attribue le temps de la partie grâce à traitementOption.getTime()
         TEMPS_PARTIE = getTime()
         temps = TEMPS_PARTIE
         convertTempsToTempsTexte()
@@ -104,7 +106,7 @@
             'Si la carte fait partie d'une série terminée
             If seriesTerminees.Contains(carte.Tag) Then
                 'On met l'image en noir et blanc
-                carte.Image = themeList(1).Images(carte.Tag + 6)
+                carte.Image = themeList(theme).Images(carte.Tag + 6)
 
                 'On passe au suivant
                 Continue For
@@ -246,7 +248,7 @@
         End If
 
         'Permet d'afficher la carte
-        sender.image = themeList(1).Images(sender.tag)
+        sender.image = themeList(theme).Images(sender.tag)
 
         If serieTerminee() Then
             'Le score du joueur est incrémenté

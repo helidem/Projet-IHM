@@ -11,4 +11,9 @@
             End If
         Next
     End Sub
+
+    Private Sub BtnRetour_Click(sender As Object, e As EventArgs) Handles BtnRetour.Click
+        Me.Hide()
+        FormMenu.Show()
+    End Sub
 End Class

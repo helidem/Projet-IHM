@@ -6,7 +6,7 @@
 
     Public Sub initOption()
         time = 90
-        theme = 1
+        theme = 0
     End Sub
 
 

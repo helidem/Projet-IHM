@@ -23,6 +23,7 @@ Partial Class FormScores
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.ListBox1 = New System.Windows.Forms.ListBox()
+        Me.BtnRetour = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'ListBox1
@@ -33,11 +34,21 @@ Partial Class FormScores
         Me.ListBox1.Size = New System.Drawing.Size(527, 303)
         Me.ListBox1.TabIndex = 0
         '
+        'BtnRetour
+        '
+        Me.BtnRetour.Location = New System.Drawing.Point(35, 22)
+        Me.BtnRetour.Name = "BtnRetour"
+        Me.BtnRetour.Size = New System.Drawing.Size(129, 44)
+        Me.BtnRetour.TabIndex = 1
+        Me.BtnRetour.Text = "Menu Principal"
+        Me.BtnRetour.UseVisualStyleBackColor = True
+        '
         'FormScores
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(813, 566)
+        Me.Controls.Add(Me.BtnRetour)
         Me.Controls.Add(Me.ListBox1)
         Me.Name = "FormScores"
         Me.Text = "FormScores"
@@ -46,4 +57,5 @@ Partial Class FormScores
     End Sub
 
     Friend WithEvents ListBox1 As ListBox
+    Friend WithEvents BtnRetour As Button
 End Class

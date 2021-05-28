@@ -92,28 +92,30 @@ Module traitementsJoueurs
         If joueurExistant(joueur) Then
             traiterJoueurExistant(joueur)
         Else
-            appendJoueur(joueur)
+            traiterNouveauJoueur(joueur)
         End If
     End Sub
 
+    '@brief Permet de traiter un joueur existant, en le mettant à jour selon les nouveaux critères
+    '@param[in] joueur le Joueur à traiter
     Private Sub traiterJoueurExistant(joueur As Joueur)
         For k As Integer = 0 To tabJoueurs.Length - 1 'ancien score
-            If Not tabJoueurs(k).nom = vbNullString Then
-                If tabJoueurs(k).nom = joueur.nom Then
-                    If joueur.cartes = 5 Then
-                        tabJoueurs(k).cumultemps = tabJoueurs(k).cumultemps + joueur.temps
-                    Else
-                        tabJoueurs(k).cumultemps = tabJoueurs(k).cumultemps + FormJeu.getTemps()
-                    End If
-                    tabJoueurs(k).nbparties = tabJoueurs(k).nbparties + 1
-                    If tabJoueurs(k).cartes < joueur.cartes Or (tabJoueurs(k).cartes = joueur.cartes And tabJoueurs(k).temps > joueur.temps) Then
-                        MsgBox("T'as battu ton score")
-                        tabJoueurs(k).cartes = joueur.cartes
-                        tabJoueurs(k).temps = joueur.temps
-                    End If
-                    mettreAJour()
-                    Exit For
+            If (tabJoueurs(k).nom = joueur.nom) Then
+                If joueur.cartes = 5 Then
+                    tabJoueurs(k).cumultemps = tabJoueurs(k).cumultemps + joueur.temps
+                Else
+                    tabJoueurs(k).cumultemps = tabJoueurs(k).cumultemps + FormJeu.getTemps()
                 End If
+
+                tabJoueurs(k).nbparties = tabJoueurs(k).nbparties + 1
+                If tabJoueurs(k).cartes < joueur.cartes Or (tabJoueurs(k).cartes = joueur.cartes And tabJoueurs(k).temps > joueur.temps) Then
+                    MsgBox("T'as battu ton score")
+                    tabJoueurs(k).cartes = joueur.cartes
+                    tabJoueurs(k).temps = joueur.temps
+                End If
+
+                mettreAJour()
+                Exit For
             End If
         Next
     End Sub
@@ -137,7 +139,7 @@ Module traitementsJoueurs
         f.Close()
     End Sub
 
-    Private Sub appendJoueur(joueur As Joueur)
+    Private Sub traiterNouveauJoueur(joueur As Joueur)
         If joueur.cartes = 5 Then
             joueur.cumultemps = joueur.cumultemps + joueur.temps
         Else

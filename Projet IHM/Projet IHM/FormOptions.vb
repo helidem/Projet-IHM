@@ -17,4 +17,14 @@
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles ButtonDefault.Click
         initOption()
     End Sub
+
+    Private Sub changementTheme(sender As Object, e As EventArgs) Handles RadioButtonClassique.CheckedChanged, RadioButtonPSG.CheckedChanged, RadioButtonRMA.CheckedChanged
+        If RadioButtonClassique.Checked Then
+            theme = 0
+        ElseIf RadioButtonPSG.Checked Then
+            theme = 1
+        ElseIf RadioButtonRMA.Checked Then
+            theme = 2
+        End If
+    End Sub
 End Class

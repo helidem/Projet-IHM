@@ -56,6 +56,7 @@ Partial Class FormJeu
         Me.BtnReprendre = New System.Windows.Forms.Button()
         Me.BtnPause = New System.Windows.Forms.Button()
         Me.ImageListPSG = New System.Windows.Forms.ImageList(Me.components)
+        Me.ImageListRMA = New System.Windows.Forms.ImageList(Me.components)
         Me.PnlCarte.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -335,6 +336,22 @@ Partial Class FormJeu
         Me.ImageListPSG.Images.SetKeyName(9, "navasNB.jpg")
         Me.ImageListPSG.Images.SetKeyName(10, "verratiNB.png")
         '
+        'ImageListRMA
+        '
+        Me.ImageListRMA.ImageStream = CType(resources.GetObject("ImageListRMA.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.ImageListRMA.TransparentColor = System.Drawing.Color.Transparent
+        Me.ImageListRMA.Images.SetKeyName(0, "benzema.png")
+        Me.ImageListRMA.Images.SetKeyName(1, "kroos.png")
+        Me.ImageListRMA.Images.SetKeyName(2, "courtois.png")
+        Me.ImageListRMA.Images.SetKeyName(3, "modric.png")
+        Me.ImageListRMA.Images.SetKeyName(4, "varane.png")
+        Me.ImageListRMA.Images.SetKeyName(5, "BackCard.png")
+        Me.ImageListRMA.Images.SetKeyName(6, "benzemaNB.jpg")
+        Me.ImageListRMA.Images.SetKeyName(7, "courtoisNB.jpg")
+        Me.ImageListRMA.Images.SetKeyName(8, "kroosNB.jpg")
+        Me.ImageListRMA.Images.SetKeyName(9, "modricNB.jpg")
+        Me.ImageListRMA.Images.SetKeyName(10, "varaneNB.jpg")
+        '
         'FormJeu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -388,4 +405,5 @@ Partial Class FormJeu
     Friend WithEvents BtnReprendre As Button
     Friend WithEvents BtnPause As Button
     Friend WithEvents ImageListPSG As ImageList
+    Friend WithEvents ImageListRMA As ImageList
 End Class

@@ -23,9 +23,9 @@ Partial Class FormOptions
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.LblTheme = New System.Windows.Forms.Label()
-        Me.RadioButton4 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton5 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton6 = New System.Windows.Forms.RadioButton()
+        Me.RadioButtonRMA = New System.Windows.Forms.RadioButton()
+        Me.RadioButtonPSG = New System.Windows.Forms.RadioButton()
+        Me.RadioButtonClassique = New System.Windows.Forms.RadioButton()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.LblTimer = New System.Windows.Forms.Label()
         Me.TextBoxTime = New System.Windows.Forms.TextBox()
@@ -44,44 +44,44 @@ Partial Class FormOptions
         Me.LblTheme.TabIndex = 2
         Me.LblTheme.Text = "Thème"
         '
-        'RadioButton4
+        'RadioButtonRMA
         '
-        Me.RadioButton4.AutoSize = True
-        Me.RadioButton4.Location = New System.Drawing.Point(290, 28)
-        Me.RadioButton4.Name = "RadioButton4"
-        Me.RadioButton4.Size = New System.Drawing.Size(90, 17)
-        Me.RadioButton4.TabIndex = 2
-        Me.RadioButton4.TabStop = True
-        Me.RadioButton4.Text = "RadioButton4"
-        Me.RadioButton4.UseVisualStyleBackColor = True
+        Me.RadioButtonRMA.AutoSize = True
+        Me.RadioButtonRMA.Location = New System.Drawing.Point(290, 28)
+        Me.RadioButtonRMA.Name = "RadioButtonRMA"
+        Me.RadioButtonRMA.Size = New System.Drawing.Size(82, 17)
+        Me.RadioButtonRMA.TabIndex = 2
+        Me.RadioButtonRMA.TabStop = True
+        Me.RadioButtonRMA.Text = "Real Madrid"
+        Me.RadioButtonRMA.UseVisualStyleBackColor = True
         '
-        'RadioButton5
+        'RadioButtonPSG
         '
-        Me.RadioButton5.AutoSize = True
-        Me.RadioButton5.Location = New System.Drawing.Point(166, 28)
-        Me.RadioButton5.Name = "RadioButton5"
-        Me.RadioButton5.Size = New System.Drawing.Size(90, 17)
-        Me.RadioButton5.TabIndex = 1
-        Me.RadioButton5.TabStop = True
-        Me.RadioButton5.Text = "RadioButton5"
-        Me.RadioButton5.UseVisualStyleBackColor = True
+        Me.RadioButtonPSG.AutoSize = True
+        Me.RadioButtonPSG.Location = New System.Drawing.Point(166, 28)
+        Me.RadioButtonPSG.Name = "RadioButtonPSG"
+        Me.RadioButtonPSG.Size = New System.Drawing.Size(47, 17)
+        Me.RadioButtonPSG.TabIndex = 1
+        Me.RadioButtonPSG.TabStop = True
+        Me.RadioButtonPSG.Text = "PSG"
+        Me.RadioButtonPSG.UseVisualStyleBackColor = True
         '
-        'RadioButton6
+        'RadioButtonClassique
         '
-        Me.RadioButton6.AutoSize = True
-        Me.RadioButton6.Location = New System.Drawing.Point(40, 28)
-        Me.RadioButton6.Name = "RadioButton6"
-        Me.RadioButton6.Size = New System.Drawing.Size(90, 17)
-        Me.RadioButton6.TabIndex = 0
-        Me.RadioButton6.TabStop = True
-        Me.RadioButton6.Text = "RadioButton6"
-        Me.RadioButton6.UseVisualStyleBackColor = True
+        Me.RadioButtonClassique.AutoSize = True
+        Me.RadioButtonClassique.Location = New System.Drawing.Point(40, 28)
+        Me.RadioButtonClassique.Name = "RadioButtonClassique"
+        Me.RadioButtonClassique.Size = New System.Drawing.Size(70, 17)
+        Me.RadioButtonClassique.TabIndex = 0
+        Me.RadioButtonClassique.TabStop = True
+        Me.RadioButtonClassique.Text = "Classique"
+        Me.RadioButtonClassique.UseVisualStyleBackColor = True
         '
         'Panel1
         '
-        Me.Panel1.Controls.Add(Me.RadioButton4)
-        Me.Panel1.Controls.Add(Me.RadioButton5)
-        Me.Panel1.Controls.Add(Me.RadioButton6)
+        Me.Panel1.Controls.Add(Me.RadioButtonRMA)
+        Me.Panel1.Controls.Add(Me.RadioButtonPSG)
+        Me.Panel1.Controls.Add(Me.RadioButtonClassique)
         Me.Panel1.Location = New System.Drawing.Point(175, 151)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(412, 75)
@@ -123,9 +123,9 @@ Partial Class FormOptions
         '
         'ButtonDefault
         '
-        Me.ButtonDefault.Location = New System.Drawing.Point(71, 292)
+        Me.ButtonDefault.Location = New System.Drawing.Point(71, 276)
         Me.ButtonDefault.Name = "ButtonDefault"
-        Me.ButtonDefault.Size = New System.Drawing.Size(151, 25)
+        Me.ButtonDefault.Size = New System.Drawing.Size(169, 39)
         Me.ButtonDefault.TabIndex = 7
         Me.ButtonDefault.Text = "Rétablir les options par defaut"
         Me.ButtonDefault.UseVisualStyleBackColor = True
@@ -151,9 +151,9 @@ Partial Class FormOptions
 
     End Sub
     Friend WithEvents LblTheme As Label
-    Friend WithEvents RadioButton4 As RadioButton
-    Friend WithEvents RadioButton5 As RadioButton
-    Friend WithEvents RadioButton6 As RadioButton
+    Friend WithEvents RadioButtonRMA As RadioButton
+    Friend WithEvents RadioButtonPSG As RadioButton
+    Friend WithEvents RadioButtonClassique As RadioButton
     Friend WithEvents Panel1 As Panel
     Friend WithEvents LblTimer As Label
     Friend WithEvents TextBoxTime As TextBox
