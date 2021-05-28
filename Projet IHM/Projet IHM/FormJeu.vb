@@ -8,7 +8,7 @@
     Private joueur As Joueur
 
     'Retient le temps de la partie
-    Private TEMPS_PARTIE As Integer = 60
+    Private TEMPS_PARTIE As Integer = 2
     Private tempsTexte As String
 
     'Retient le score du joueur, c'est à dire son nombre de cartes
@@ -371,6 +371,7 @@
         joueur.cartes = cartes
         joueur.nom = LblJoueurModif.Text
         joueur.temps = temps
+
         traitementSauvegarde(joueur)
 
         'Si le joueur n'a trouvé aucun carré
@@ -378,15 +379,16 @@
             If MsgBox(LblJoueurModif.Text & ", vous n'avez trouvé aucun carré. Votre score est donc de " & cartes &
                       ", et votre temps est de " & temps & " secondes.", vbOKOnly, "Partie perdue") = vbOK Then
                 Me.Close()
-                FormMenu.Show()
+                Application.Restart()
             End If
         Else
             If MsgBox(LblJoueurModif.Text & ", la partie est finie. Votre score est de " & cartes &
                       ", et votre temps est de " & temps & " secondes.", vbOKOnly, "Partie terminée") = vbOK Then
                 Me.Close()
-                FormMenu.Show()
+                Application.Restart()
             End If
         End If
+
     End Sub
 
     '-----------------------------------------------------------------------------------------------
@@ -402,4 +404,10 @@
             FormMenu.Show()
         End If
     End Sub
+
+
+    Public Function getTemps() As Integer
+        Return TEMPS_PARTIE
+    End Function
+
 End Class

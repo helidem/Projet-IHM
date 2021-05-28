@@ -14,8 +14,10 @@
         Me.FormBorderStyle = FormBorderStyle.FixedSingle
         'Adapte la taille de la fenêtre automatiquement
         Me.AutoSize = True
-
         BtnJouer.Enabled = False
+        actrualisercombobox()
+
+
     End Sub
 
     '-----------------------------------------------------------------------------------------------
@@ -58,6 +60,7 @@
     '@brief Permet le lancement du jeu sur le clique de BtnJouer
     '@param[in] sender et e
     Private Sub BtnJouer_Click(sender As Object, e As EventArgs) Handles BtnJouer.Click
+
         FormJeu.Show()
         Me.Hide()
     End Sub
@@ -79,6 +82,16 @@
     '@param[in] sender et e
     Private Sub BtnScores_Click(sender As Object, e As EventArgs) Handles BtnScores.Click
         Me.Hide()
-        FormSauvegardeNom.Show()
+        FormScores.Show()
+    End Sub
+
+
+    Public Sub actrualisercombobox()
+        ComboBoxNom.Items.Clear()
+        For Each item As Joueur In tabJoueur
+            If Not item.nom = vbNullString Then
+                ComboBoxNom.Items.Add(item.nom)
+            End If
+        Next
     End Sub
 End Class
