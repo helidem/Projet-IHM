@@ -379,13 +379,13 @@
             If MsgBox(LblJoueurModif.Text & ", vous n'avez trouvé aucun carré. Votre score est donc de " & cartes &
                       ", et votre temps est de " & temps & " secondes.", vbOKOnly, "Partie perdue") = vbOK Then
                 Me.Close()
-                Application.Restart()
+                FormMenu.Show()
             End If
         Else
             If MsgBox(LblJoueurModif.Text & ", la partie est finie. Votre score est de " & cartes &
                       ", et votre temps est de " & temps & " secondes.", vbOKOnly, "Partie terminée") = vbOK Then
                 Me.Close()
-                Application.Restart()
+                FormMenu.Show()
             End If
         End If
 

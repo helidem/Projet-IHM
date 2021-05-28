@@ -79,6 +79,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormOptions.Designer.vb">
+      <DependentUpon>FormOptions.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormOptions.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormSauvegardeNom.designer.vb">
       <DependentUpon>FormSauvegardeNom.vb</DependentUpon>
     </Compile>
@@ -123,6 +129,9 @@
     <Compile Include="traitementsJoueurs.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FormOptions.resx">
+      <DependentUpon>FormOptions.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormSauvegardeNom.resx">
       <DependentUpon>FormSauvegardeNom.vb</DependentUpon>
     </EmbeddedResource>
