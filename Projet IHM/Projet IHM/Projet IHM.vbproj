@@ -172,6 +172,7 @@
     <Content Include="Images\Card2.png" />
     <Content Include="Images\Card3.png" />
     <Content Include="Images\Card4.png" />
+    <None Include="Images\memory.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
