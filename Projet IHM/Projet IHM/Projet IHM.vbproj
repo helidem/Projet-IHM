@@ -6,11 +6,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{2A850480-D61B-4DFF-BE87-D697CC2A7B2B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>Projet_IHM.FormMenu</StartupObject>
+    <StartupObject>Projet_IHM.My.MyApplication</StartupObject>
     <RootNamespace>Projet_IHM</RootNamespace>
     <AssemblyName>Projet IHM</AssemblyName>
     <FileAlignment>512</FileAlignment>
-    <MyType>WindowsFormsWithCustomSubMain</MyType>
+    <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -184,6 +184,8 @@
     <Content Include="Images\varaneNB.jpg" />
     <Content Include="Images\verrati.png" />
     <Content Include="Images\verratiNB.png" />
+    <None Include="Resources\Icon1.ico" />
+    <None Include="Resources\icone.bmp" />
     <None Include="Images\memory.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

@@ -79,6 +79,8 @@
         Me.FormBorderStyle = FormBorderStyle.FixedSingle
         'Adapte la taille de la fenêtre automatiquement
         Me.AutoSize = True
+        'Change l'icone
+        Me.Icon = My.Resources.game
 
         'Associe themeList() aux ImageLists
         themeList = {ImageListDefaut, ImageListPSG, ImageListRMA}
@@ -439,25 +441,21 @@
             If temps = TEMPS_PARTIE Then
                 If MsgBox(LblJoueurModif.Text & ", vous n'avez trouvé aucun carré. Votre score est donc de " & serie &
                           ", et votre temps est de " & temps & " secondes.", vbOKOnly, "Partie perdue") = vbOK Then
-                    Me.Close()
-                    FormMenu.Show()
+                    Application.Restart()
+                    'Salam
                 End If
             Else
                 If MsgBox(LblJoueurModif.Text & ", la partie est finie. Votre score est de " & serie &
                           ", et votre temps est de " & temps & " secondes.", vbOKOnly, "Partie terminée") = vbOK Then
-                    Me.Close()
-                    FormMenu.Show()
+                    Application.Restart()
                 End If
             End If
         Else
             'SI LE MODE DETENTE EST ACTIVE
             If MsgBox("BRAVO. Vous êtes détendu !") = vbOK Then
-                Me.Close()
-                FormMenu.Show()
+                Application.Restart()
             End If
         End If
-
-
     End Sub
 
     '-----------------------------------------------------------------------------------------------

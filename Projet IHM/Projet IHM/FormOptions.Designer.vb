@@ -115,32 +115,32 @@ Partial Class FormOptions
         '
         'BtnValider
         '
-        Me.BtnValider.Location = New System.Drawing.Point(370, 399)
+        Me.BtnValider.Location = New System.Drawing.Point(360, 397)
         Me.BtnValider.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.BtnValider.Name = "BtnValider"
-        Me.BtnValider.Size = New System.Drawing.Size(135, 49)
+        Me.BtnValider.Size = New System.Drawing.Size(157, 59)
         Me.BtnValider.TabIndex = 5
         Me.BtnValider.Text = "Valider"
         Me.BtnValider.UseVisualStyleBackColor = True
         '
         'BtnMenu
         '
-        Me.BtnMenu.Location = New System.Drawing.Point(221, 493)
+        Me.BtnMenu.Location = New System.Drawing.Point(180, 472)
         Me.BtnMenu.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.BtnMenu.Name = "BtnMenu"
-        Me.BtnMenu.Size = New System.Drawing.Size(135, 49)
+        Me.BtnMenu.Size = New System.Drawing.Size(157, 59)
         Me.BtnMenu.TabIndex = 6
         Me.BtnMenu.Text = "Menu principal"
         Me.BtnMenu.UseVisualStyleBackColor = True
         '
         'BtnDefault
         '
-        Me.BtnDefault.Location = New System.Drawing.Point(518, 493)
+        Me.BtnDefault.Location = New System.Drawing.Point(535, 472)
         Me.BtnDefault.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.BtnDefault.Name = "BtnDefault"
-        Me.BtnDefault.Size = New System.Drawing.Size(135, 49)
+        Me.BtnDefault.Size = New System.Drawing.Size(157, 59)
         Me.BtnDefault.TabIndex = 7
-        Me.BtnDefault.Text = "Rétablir les options par defaut"
+        Me.BtnDefault.Text = "Rétablir options par defaut"
         Me.BtnDefault.UseVisualStyleBackColor = True
         '
         'LblTitreOptions
@@ -188,7 +188,7 @@ Partial Class FormOptions
         Me.Controls.Add(Me.LblTimer)
         Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "FormOptions"
-        Me.Text = "FormOptions"
+        Me.Text = "Options"
         Me.PnlTheme.ResumeLayout(False)
         Me.PnlTheme.PerformLayout()
         Me.ResumeLayout(False)

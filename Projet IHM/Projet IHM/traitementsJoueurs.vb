@@ -24,7 +24,7 @@ Module traitementsJoueurs
     '@brief Permet de récupérer les joueurs depuis le fichier texte pour les mettre dans tabJoueurs
     '@see ajouterJoueurTab(joueur As Joueur)
     Public Sub recupererJoueurs()
-        Dim FILE_NAME As String = "test.txt"
+        Dim FILE_NAME As String = "save.txt"
         Dim TextLine As String
 
         'Efface le tableau tabJoueurs, pour pouvoir repartir d'une bonne base
@@ -51,6 +51,7 @@ Module traitementsJoueurs
             objReader.Close()
         Else
             MessageBox.Show("Le fichier n'existe pas !")
+            Application.Exit()
         End If
     End Sub
 
@@ -116,7 +117,7 @@ Module traitementsJoueurs
 
                 'Si le joueur a trouvé un plus grand nombre de série, ou si il a mis moins de temps pour trouver le même nombre
                 If tabJoueurs(k).serie < joueur.serie Or (tabJoueurs(k).serie = joueur.serie And tabJoueurs(k).temps > joueur.temps) Then
-                    MsgBox("T'as battu ton score")
+                    MsgBox("FELICITATION !! TU AS BATTU TON MEILLEUR SCORE", , "Félicitation")
                     'Mise à jour du record
                     tabJoueurs(k).serie = joueur.serie
                     tabJoueurs(k).temps = joueur.temps
@@ -130,7 +131,7 @@ Module traitementsJoueurs
 
     '@brief Permet de mettre à jour le fichier texte
     Private Sub mettreAJour()
-        Dim f As New StreamWriter("test.txt", False)
+        Dim f As New StreamWriter("save.txt", False)
         For Each j As Joueur In tabJoueurs
             'Permet de ne pas écrire si le nom est nul, à cause du vbNewLine
             If Not j.nom = vbNullString Then
@@ -152,6 +153,6 @@ Module traitementsJoueurs
         'Initialisation de son nombre de parties
         joueur.nbparties = 1
         'Ecriture du nouveau joueur dans le fichier de sauvegarde
-        My.Computer.FileSystem.WriteAllText("test.txt", joueur.nom & ";" & joueur.serie & ";" & joueur.temps & ";" & joueur.cumulTemps & ";" & joueur.nbparties & vbNewLine, True)
+        My.Computer.FileSystem.WriteAllText("save.txt", joueur.nom & ";" & joueur.serie & ";" & joueur.temps & ";" & joueur.cumulTemps & ";" & joueur.nbparties & vbNewLine, True)
     End Sub
 End Module

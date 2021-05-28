@@ -9,9 +9,11 @@
         Me.FormBorderStyle = FormBorderStyle.FixedSingle
         'Adapte la taille de la fenêtre automatiquement
         Me.AutoSize = True
+        'Change l'icone
+        Me.Icon = My.Resources.game
 
-        ListBoxScores.Enabled = False
         remplirListBoxScores()
+        ListBoxScores.Enabled = False
     End Sub
 
     '@brief Permet de remplir la ListBoxScores avec le score des personnes enregistrées
@@ -31,14 +33,14 @@
 
         'Si la liste est vide
         If ListBoxScores.Items.Count = 0 Then
-            ListBoxScores.Items.Add("Aucun score n'est sauvegardé pour l'instant ! Si vous en avez un, veuillez recharger le programme.")
+            ListBoxScores.Items.Add("Aucun score n'est sauvegardé pour l'instant !")
         End If
     End Sub
 
     '@brief Permet de revenir au menu principal
     '@param[in] sender et e
     Private Sub retourMenu(sender As Object, e As EventArgs) Handles BtnRetour.Click
-        Me.Hide()
+        Me.Close()
         FormMenu.Show()
     End Sub
 End Class

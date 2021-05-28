@@ -8,6 +8,8 @@
         Me.FormBorderStyle = FormBorderStyle.FixedSingle
         'Adapte la taille de la fenêtre automatiquement
         Me.AutoSize = True
+        'Change l'icone
+        Me.Icon = My.Resources.game
     End Sub
 
     '-----------------------------------------------------------------------------------------------
@@ -17,6 +19,7 @@
     Private Sub dedente_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBoxDetente.CheckedChanged
         If CheckBoxDetente.Checked Then
             TextBoxTimer.Enabled = False
+            TextBoxTimer.Text = vbNullString
         Else
             TextBoxTimer.Enabled = True
         End If
@@ -74,8 +77,8 @@
         If Not CheckBoxDetente.Checked Then
             If (TextBoxTimer.Text = "") OrElse TextBoxTimer.Text = 0 _
                 OrElse TextBoxTimer.Text > 599 Then
-                MsgBox("Vous devez entrer comme temps une valeur comprise entre 1 et 599.", vbOKOnly)
                 LblTimer.ForeColor = Color.Red
+                MsgBox("Vous devez entrer comme temps une valeur comprise entre 1 et 599.", vbOKOnly)
                 Return False
             End If
         End If

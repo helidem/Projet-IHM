@@ -13,6 +13,8 @@
         Me.FormBorderStyle = FormBorderStyle.FixedSingle
         'Adapte la taille de la fenêtre automatiquement
         Me.AutoSize = True
+        'Change l'icone
+        Me.Icon = My.Resources.game
 
         traitementsJoueurs.recupererJoueurs()
         traitementsOptions.initOption()

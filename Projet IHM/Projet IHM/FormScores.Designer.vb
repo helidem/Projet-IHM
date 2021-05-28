@@ -67,7 +67,7 @@ Partial Class FormScores
         Me.Controls.Add(Me.ListBoxScores)
         Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "FormScores"
-        Me.Text = "FormScores"
+        Me.Text = "Scores"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
